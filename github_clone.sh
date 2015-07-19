@@ -16,10 +16,8 @@ git clone https://github.com/jbarcia/ducky.git
 
 # Crowe
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
-mkdir /toolslinux
-mkdir /tools
-ln -s /root/github/Crowe-Scripts/toolslinux /toolslinux
-ln -s /root/github/Crowe-Scripts/toolsv3 /tools
+ln -s /root/github/Crowe-Scripts/toolslinux /
+ln -s /root/github/Crowe-Scripts/toolsv3 /
 
 # Recon
 mkdir -p $dir/recon
