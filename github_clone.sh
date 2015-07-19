@@ -12,9 +12,10 @@ git clone https://github.com/jbarcia/Misc.git
 # git clone https://github.com/jbarcia/g0tmi1k.git
 git clone https://github.com/offensive-security/kali-linux-recipes.git
 git clone https://github.com/mubix/8021xbridge.git
+git clone https://github.com/jbarcia/ducky.git
 
 # Crowe
-git clone https://github.com/jbarcia/Crowe-Scripts.git
+git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
 mkdir /toolslinux
 mkdir /tools
 ln -s /root/github/Crowe-Scripts/toolslinux /toolslinux
