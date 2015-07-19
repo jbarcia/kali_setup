@@ -13,6 +13,13 @@ git clone https://github.com/jbarcia/Misc.git
 git clone https://github.com/offensive-security/kali-linux-recipes.git
 git clone https://github.com/mubix/8021xbridge.git
 
+# Crowe
+git clone https://github.com/jbarcia/Crowe-Scripts.git
+mkdir /toolslinux
+mkdir /tools
+ln -s /root/github/Crowe-Scripts/toolslinux /toolslinux
+ln -s /root/github/Crowe-Scripts/toolsv3 /tools
+
 # Recon
 mkdir -p $dir/recon
 cd $dir/recon

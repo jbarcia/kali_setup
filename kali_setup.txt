@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
+apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev
+
+# custom bash search
+echo "## arrow up" >> ~/.inputrc
+echo "\"\\e[A\":history-search-backward" >> ~/.inputrc
+echo "## arrow down" >> ~/.inputrc
+echo "\"\\e[B\":history-search-forward" >> ~/.inputrc
