@@ -1,12 +1,16 @@
 #!/bin/bash
-
+# Kali Build Script
 
 apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
 #Add dependencies
-apt-get remove python-pypcap && apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2
+apt-get remove python-pypcap && apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2 flashplugin-nonfree unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller filezilla filezilla-common golang remmina 
+update-flashplugin-nonfree --install
 
-cp -R /usr/share/doc/python-impacket-doc/examples/smbrelayx /toolslinux/exploits/impacket/impacket/
+mkdir /mnt/share
+
+# cp -R /usr/share/doc/python-impacket-doc/examples/smbrelayx /toolslinux/exploits/impacket/impacket/
+gem install nmap-parser
 
 #########################################
 # custom bash search
@@ -44,3 +48,43 @@ unzip Crowe_Medusa-2.2_rc2.zip
 cd root/medusa-2.2_rc2/
 ./configure && make && make install
 #########################################
+
+#########################################
+# Shareenum
+dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_amd64.deb
+#########################################
+
+#########################################
+# NTDS_EXTRACT
+mkdir ~/NTDS_EXTRACT
+cd ~/NTDS_EXTRACT
+cp /toolsv3/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
+cp /toolsv3/Assessment/_Post-Exploitation/VSS/ntdsxtract_v1_0.zip ~/NTDS_EXTRACT/
+cp /toolsv3/Assessment/_Post-Exploitation/VSS/dshashes.py ~/NTDS_EXTRACT/
+tar zxvf libesedb-alpha-20120102.tar.gz
+unzip ntdsxtract_v1_0.zip
+cp dshashes.py NTDSXtract\ 1.0/dshashes.py
+
+cd libesedb-20120102
+chmod +x configure
+./configure && make
+#########################################
+
+#########################################
+# John the Ripper Community Enhanced Version
+cd /tmp
+wget http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.gz
+tar xzvf john-1.8.0-jumbo-1.tar.gz
+cd john-1.8.0-jumbo-1/src
+./configure
+make clean && make -s
+make && make install
+mv /usr/sbin/john /usr/sbin/john.bak
+cd ../run
+cp john /usr/sbin/john
+
+# Optional
+john --test
+#########################################
+
+cd ~

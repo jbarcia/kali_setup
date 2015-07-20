@@ -64,6 +64,7 @@ cd $dir/web
 git clone https://github.com/jbarcia/Web-Shells.git
 git clone https://github.com/WestpointLtd/tls_prober.git
 git clone https://github.com/sensepost/jack.git
+git clone https://github.com/sqlmapproject/sqlmap.git
 
 # Shellcode
 mkdir -p $dir/shellcode
