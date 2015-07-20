@@ -34,7 +34,6 @@ git clone https://github.com/byt3bl33d3r/pth-toolkit.git
 git clone https://github.com/DanMcInerney/net-creds.git
 git clone https://github.com/Neohapsis/creddump7.git
 git clone https://github.com/RandomStorm/RSMangler.git
-git clone https://github.com/brav0hax/easy-creds.git
 git clone https://github.com/HarmJ0y/ImpDump.git
 
 # IPv6
@@ -48,6 +47,7 @@ mkdir -p $dir/mitm
 cd $dir/mitm
 git clone https://github.com/jbarcia/MiTM-CaptivePortal.git
 git clone https://github.com/byt3bl33d3r/MITMf.git
+git clone https://github.com/brav0hax/easy-creds.git
 
 # Wifi
 mkdir -p $dir/wifi
@@ -96,6 +96,7 @@ git clone https://github.com/danielmiessler/SecLists.git
 mkdir -p $dir/metasploit
 cd $dir/metasploit
 git clone https://github.com/pwnwiki/q.git
+ln -s /root/github/Crowe-Scripts/metasploit_modules $dir/metasploit
 
 # Meterpreter Shells
 mkdir -p $dir/meterpreter
