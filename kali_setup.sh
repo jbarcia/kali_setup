@@ -1,6 +1,23 @@
 #!/bin/bash
 # Kali Build Script
 
+proc=0
+arm=0
+
+# Get Kernel Version
+echo "==========================="
+if [ "$(uname -m)" == "x86_64" ]; then 
+	proc=64
+	echo "64 bit"
+elif [ "$(uname -m)" == "i386" ]; then 
+	proc=32
+	echo "32 bit"
+elif [ "$(uname -m)" == *"arm"* ]; then 
+	arm=1
+	echo "ARM"
+fi
+echo "==========================="
+
 apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
 #Add dependencies
@@ -22,19 +39,22 @@ echo "\"\\e[B\":history-search-forward" >> ~/.inputrc
 
 #########################################
 # Loki Setup
-apt-get -y remove python-libpcap
-
-cd loki_debs
-
-dpkg -i python-central_0.6.17ubuntu2_all.deb
+if [ $arm == 0 ]; then 
+	apt-get -y remove python-libpcap
+	cd loki_debs
+	dpkg -i python-central_0.6.17ubuntu2_all.deb
+fi
 
 # x86
-dpkg -i libssl0.9.8_0.9.8o-7_i386.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_i386.deb pylibpcap_0.6.2-1_i386.deb
-dpkg –i loki_0.2.7-1_i386.deb
+if [ $proc == 32 ]; then 
+	dpkg -i libssl0.9.8_0.9.8o-7_i386.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_i386.deb pylibpcap_0.6.2-1_i386.deb
+	dpkg –i loki_0.2.7-1_i386.deb
 
 # x64
-dpkg -i libssl0.9.8_0.9.8o-7_amd64.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_amd64.deb pylibpcap_0.6.2-1_amd64.deb libcap-dev_2.22-1.2_amd64.deb libpcap0.8-dev_1.3.0-1_amd64.deb
-dpkg -i loki_0.2.7-1_amd64.deb
+elif [ $proc == 64 ]; then
+	dpkg -i libssl0.9.8_0.9.8o-7_amd64.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_amd64.deb pylibpcap_0.6.2-1_amd64.deb libcap-dev_2.22-1.2_amd64.deb libpcap0.8-dev_1.3.0-1_amd64.deb
+	dpkg -i loki_0.2.7-1_amd64.deb
+fi
 #########################################
 
 cd ..
@@ -42,16 +62,20 @@ cd ..
 
 #########################################
 # Crowe Medusa v2.2_rc2
-cp /toolslinux/passwords/medusa/Crowe_Medusa-2.2_rc2.zip /tmp/
-cd /tmp
-unzip Crowe_Medusa-2.2_rc2.zip
-cd root/medusa-2.2_rc2/
-./configure && make && make install
+if [ $arm == 0 ]; then 
+	cp /toolslinux/passwords/medusa/Crowe_Medusa-2.2_rc2.zip /tmp/
+	cd /tmp
+	unzip Crowe_Medusa-2.2_rc2.zip
+	cd root/medusa-2.2_rc2/
+	./configure && make && make install
+fi
 #########################################
 
 #########################################
 # Shareenum
-dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_amd64.deb
+if [ $proc == 32 ]; then dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_i386.deb
+if [ $proc == 64 ]; then dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_amd64.deb
+
 #########################################
 
 #########################################
@@ -72,19 +96,21 @@ chmod +x configure
 
 #########################################
 # John the Ripper Community Enhanced Version
-cd /tmp
-wget http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.gz
-tar xzvf john-1.8.0-jumbo-1.tar.gz
-cd john-1.8.0-jumbo-1/src
-./configure
-make clean && make -s
-make && make install
-mv /usr/sbin/john /usr/sbin/john.bak
-cd ../run
-cp john /usr/sbin/john
-
-# Optional
-john --test
+if [ $arm == 0 ]; then 
+	cd /tmp
+	wget http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.gz
+	tar xzvf john-1.8.0-jumbo-1.tar.gz
+	cd john-1.8.0-jumbo-1/src
+	./configure
+	make clean && make -s
+	make && make install
+	mv /usr/sbin/john /usr/sbin/john.bak
+	cd ../run
+	cp john /usr/sbin/john
+	
+	# Optional
+	john --test
+fi
 #########################################
 
 cd ~

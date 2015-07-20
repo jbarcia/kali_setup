@@ -57,6 +57,7 @@ git clone https://github.com/sophron/wifiphisher.git
 git clone https://github.com/derv82/wifite.git
 git clone https://github.com/lostincynicism/FuzzAP.git
 git clone https://github.com/SilverFoxx/PwnSTAR.git
+git clone https://github.com/TigerSecurity/gerix-wifi-cracker.git
 
 # Web
 mkdir -p $dir/web
