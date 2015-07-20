@@ -73,8 +73,8 @@ fi
 
 #########################################
 # Shareenum
-if [ $proc == 32 ]; then dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_i386.deb
-if [ $proc == 64 ]; then dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_amd64.deb
+if [ $proc == 32 ]; then dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_i386.deb fi
+if [ $proc == 64 ]; then dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_amd64.deb fi
 
 #########################################
 
