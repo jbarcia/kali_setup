@@ -13,6 +13,8 @@ git clone https://github.com/jbarcia/Misc.git
 git clone https://github.com/offensive-security/kali-linux-recipes.git
 git clone https://github.com/mubix/8021xbridge.git
 git clone https://github.com/jbarcia/ducky.git
+git clone https://github.com/pentestmonkey/yaptest.git
+
 
 # Crowe
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
@@ -24,8 +26,16 @@ mkdir -p $dir/recon
 cd $dir/recon
 git clone https://github.com/jbarcia/Recon.git
 git clone https://github.com/mubix/resolvequick.git
-git clone https://github.com/jbarcia/User-Enumeration.git
+# git clone https://github.com/jbarcia/User-Enumeration.git
 git clone https://github.com/smicallef/spiderfoot.git
+git clone https://github.com/pentestmonkey/timing-attack-checker.git
+git clone https://github.com/pentestmonkey/dns-grind.git
+git clone https://github.com/pentestmonkey/rsh-grind.git
+git clone https://github.com/pentestmonkey/smtp-user-enum.git
+git clone https://github.com/pentestmonkey/finger-user-enum.git
+git clone https://github.com/pentestmonkey/ftp-user-enum.git
+git clone https://github.com/pentestmonkey/ident-user-enum.git
+git clone https://github.com/pentestmonkey/gateway-finder.git
 
 # Passwords
 mkdir -p $dir/passwords
@@ -41,6 +51,7 @@ mkdir -p $dir/ipv6
 cd $dir/ipv6
 git clone https://github.com/fgont/ipv6toolkit.git
 git clone https://github.com/Neohapsis/suddensix.git
+git clone https://github.com/vanhauser-thc/thc-ipv6.git
 
 # MiTM
 mkdir -p $dir/mitm
@@ -72,6 +83,9 @@ mkdir -p $dir/shellcode
 cd $dir/shellcode
 git clone https://github.com/addenial/ps1encode.git
 git clone https://github.com/Veil-Framework/Veil.git
+git clone https://github.com/pentestmonkey/perl-reverse-shell.git
+git clone https://github.com/pentestmonkey/php-reverse-shell.git
+git clone https://github.com/pentestmonkey/php-findsock-shell.git
 
 # Exploits
 mkdir -p $dir/exploits
@@ -82,12 +96,16 @@ git clone https://github.com/CoreSecurity/impacket.git
 git clone https://github.com/CISOfy/lynis.git
 git clone https://github.com/sensepost/BiLE-suite.git
 git clone https://github.com/pwnwiki/pwnwiki-tools.git
+git clone https://github.com/pentestmonkey/windows-privesc-check.git
+git clone https://github.com/pentestmonkey/unix-privesc-check.git
+git clone https://github.com/pentestmonkey/exploit-suggester.git
 
 # PostExploit
 mkdir -p $dir/post
 cd $dir/post
 git clone https://github.com/ShawnDEvans/smbmap.git
 git clone https://github.com/mubix/post-exploitation.git
+git clone https://github.com/pentestmonkey/pysecdump.git
 
 # Wordlists
 mkdir -p $dir/wordlists
