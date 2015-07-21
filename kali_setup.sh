@@ -139,7 +139,7 @@ if [ $arm == 0 ]; then
 	cp john /usr/sbin/john
 	
 	# Optional
-	john --test
+	#john --test
 fi
 #########################################
 echo "==========================="
