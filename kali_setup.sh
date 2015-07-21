@@ -142,6 +142,17 @@ if [ $arm == 0 ]; then
 	#john --test
 fi
 #########################################
+
+#########################################
+# Install 32 bit libraries for wmic.py
+if [ $proc == 64 ]; then 
+	dpkg --add-architecture i386
+	apt-get update
+	apt-get install ia32-libs
+	cp pth-wmi/kaliwmis-32 /usr/sbin/kaliwmis-32
+fi
+
+#########################################
 echo "==========================="
 echo "END"
 echo "==========================="
