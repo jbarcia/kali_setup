@@ -19,6 +19,9 @@ elif [ "$(uname -m)" == *"arm"* ]; then
 fi
 echo "==========================="
 
+echo "==========================="
+echo "Updating"
+echo "==========================="
 apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
 #Add dependencies
@@ -32,6 +35,9 @@ gem install nmap-parser
 
 #########################################
 # custom bash search
+echo "==========================="
+echo "Custom Bash Search"
+echo "==========================="
 echo "## arrow up" >> ~/.inputrc
 echo "\"\\e[A\":history-search-backward" >> ~/.inputrc
 echo "## arrow down" >> ~/.inputrc
@@ -41,6 +47,9 @@ echo "\"\\e[B\":history-search-forward" >> ~/.inputrc
 #########################################
 # Loki Setup
 if [ $arm == 0 ]; then 
+	echo "==========================="
+	echo "Loki Setup"
+	echo "==========================="
 	apt-get -y remove python-libpcap
 	cd loki_debs
 	dpkg -i python-central_0.6.17ubuntu2_all.deb
@@ -59,11 +68,17 @@ fi
 #########################################
 
 cd ..
+echo "==========================="
+echo "Github Dump"
+echo "==========================="
 ./github_clone.sh
 
 #########################################
 # Crowe Medusa v2.2_rc2
 if [ $arm == 0 ]; then 
+	echo "==========================="
+	echo " Crowe Medusa"
+	echo "==========================="
 	cp /toolslinux/passwords/medusa/Crowe_Medusa-2.2_rc2.zip /tmp/
 	cd /tmp
 	unzip Crowe_Medusa-2.2_rc2.zip
@@ -74,6 +89,11 @@ fi
 
 #########################################
 # Shareenum
+if [ $arm == 0 ]; then 
+	echo "==========================="
+	echo " Shareenum Install"
+	echo "==========================="
+fi
 if [ $proc == 32 ]; then 
 	dpkg -i /toolslinux/recon/shareenum/shareenum_2.0_i386.deb
 elif [ $proc == 64 ]; then 
@@ -84,6 +104,9 @@ fi
 
 #########################################
 # NTDS_EXTRACT
+echo "==========================="
+echo "NTDS Extract" 
+echo "==========================="
 mkdir ~/NTDS_EXTRACT
 cd ~/NTDS_EXTRACT
 cp /toolsv3/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
@@ -101,6 +124,9 @@ chmod +x configure
 #########################################
 # John the Ripper Community Enhanced Version
 if [ $arm == 0 ]; then 
+	echo "==========================="
+	echo " JTR Community"
+	echo "==========================="
 	cd /tmp
 	wget http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.gz
 	tar xzvf john-1.8.0-jumbo-1.tar.gz
@@ -116,5 +142,7 @@ if [ $arm == 0 ]; then
 	john --test
 fi
 #########################################
-
+echo "==========================="
+echo "END"
+echo "==========================="
 cd ~
