@@ -13,7 +13,7 @@ if [ "$(uname -m)" == "x86_64" ]; then
 elif [ "$(uname -m)" == "i386" ]; then 
 	proc=32
 	echo "32 bit"
-elif [ "$(uname -m)" == *"arm"* ]; then 
+elif [[ "$(uname -m)" == *"arm"* ]]; then 
 	arm=1
 	echo "ARM"
 fi
