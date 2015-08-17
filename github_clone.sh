@@ -59,6 +59,13 @@ cd $dir/mitm
 git clone https://github.com/jbarcia/MiTM-CaptivePortal.git
 git clone https://github.com/byt3bl33d3r/MITMf.git
 git clone https://github.com/brav0hax/easy-creds.git
+git clone https://github.com/CylanceSPEAR/SMBTrap.git
+git clone https://github.com/hatRiot/zarp.git
+git clone https://github.com/evilsocket/bettercap
+	cd bettercap
+	gem build bettercap.gemspec
+	sudo gem install bettercap*.gem
+	cd ..
 
 # Wifi
 mkdir -p $dir/wifi
@@ -83,6 +90,9 @@ mkdir -p $dir/shellcode
 cd $dir/shellcode
 git clone https://github.com/addenial/ps1encode.git
 git clone https://github.com/Veil-Framework/Veil.git
+	cd Veil
+	./Install.sh -c
+	cd ..
 git clone https://github.com/pentestmonkey/perl-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-findsock-shell.git
@@ -106,6 +116,13 @@ cd $dir/post
 git clone https://github.com/ShawnDEvans/smbmap.git
 git clone https://github.com/mubix/post-exploitation.git
 git clone https://github.com/pentestmonkey/pysecdump.git
+git clone https://github.com/PoshSec/PoshSec.git
+git clone https://github.com/PowerShellEmpire/Empire.git
+cd Empire
+cd setup
+./install.sh
+cd ..
+cd ..
 
 # Wordlists
 mkdir -p $dir/wordlists
@@ -125,6 +142,10 @@ git clone https://github.com/kost/nanomet.git
 git clone https://github.com/SherifEldeeb/TinyMet.git
 git clone https://github.com/dirtyfilthy/metassh.git
 
+# Powershell
+#mkdir -p $dir/Powershell
+#cd $dir/Powershell
+#git clone https://github.com/PoshSec/PoshSec.git
 
 # Spiderlabs
 mkdir -p $dir/spiderlabs

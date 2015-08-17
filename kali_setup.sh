@@ -25,8 +25,7 @@ echo "==========================="
 apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
 #Add dependencies
-apt-get remove python-pypcap && apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2 flashplugin-nonfree unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller filezilla filezilla-common golang remmina 
-update-flashplugin-nonfree --install
+apt-get remove python-pypcap && apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2 unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller filezilla filezilla-common golang remmina ruby-dev libpcap-dev
 
 mkdir /mnt/share
 
