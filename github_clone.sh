@@ -36,6 +36,51 @@ git clone https://github.com/pentestmonkey/finger-user-enum.git
 git clone https://github.com/pentestmonkey/ftp-user-enum.git
 git clone https://github.com/pentestmonkey/ident-user-enum.git
 git clone https://github.com/pentestmonkey/gateway-finder.git
+git clone https://github.com/leebaird/discover.git
+	cd discover/
+	./setup.sh
+	cd ..
+git clone https://bitbucket.org/LaNMaSteR53/peepingtom.git
+	cd ./peepingtom/
+	wget https://gist.github.com/nopslider/5984316/raw/423b02c53d225fe8dfb4e2df9a20bc800cc7
+	wget https://phantomjs.googlecode.com/files/phantomjs1.9.2-linux-i686.tar.bz2
+	tar xvjf phantomjs-1.9.2-linux-i686.tar.bz2
+	cp ./phantomjs-1.9.2-linux-i686/bin/phantomjs
+	cd ..
+pip install selenium
+git clone https://github.com/breenmachine/httpscreenshot.git
+	cd ./httpscreenshot
+	chmod +x install-dependencies.sh && ./install-dependencies.sh
+	cd ..
+git clone https://github.com/robertdavidgraham/masscan.git
+	cd /opt/masscan
+	make
+	make install
+	cd ..
+git clone https://github.com/michenriksen/gitrob.git
+	gem install bundler
+	service postgresql start
+	su postgres
+	createuser -s gitrob --pwprompt
+	createdb -O gitrob gitrob
+	exit
+	cd ./gitrob/bin
+	gem install gitrob
+	cd ..
+git clone https://github.com/ChrisTruncer/EyeWitness.git
+git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git
+git clone https://github.com/secforce/sparta.git /opt/sparta
+mkdir ./spiderfoot/ && cd ./spiderfoot
+	wget http://sourceforge.net/projects/spiderfoot/files/spiderfoot-2.3.0-src.tar.gz/download
+	tar xzvf download
+	pip install lxml
+	pip install netaddr
+	pip install M2Crypto
+	pip install cherrypy
+	pip install mako
+	cd ..
+
+
 
 # Passwords
 mkdir -p $dir/passwords
@@ -45,6 +90,9 @@ git clone https://github.com/DanMcInerney/net-creds.git
 git clone https://github.com/Neohapsis/creddump7.git
 git clone https://github.com/RandomStorm/RSMangler.git
 git clone https://github.com/HarmJ0y/ImpDump.git
+git clone https://github.com/SpiderLabs/oracle_pwd_tools.git
+git clone https://github.com/DanMcInerney/net-creds.git
+git clone https://github.com/SpiderLabs/Responder.git
 
 # IPv6
 mkdir -p $dir/ipv6
@@ -77,6 +125,7 @@ git clone https://github.com/lostincynicism/FuzzAP.git
 git clone https://github.com/SilverFoxx/PwnSTAR.git
 git clone https://github.com/TigerSecurity/gerix-wifi-cracker.git
 
+
 # Web
 mkdir -p $dir/web
 cd $dir/web
@@ -84,6 +133,9 @@ git clone https://github.com/jbarcia/Web-Shells.git
 git clone https://github.com/WestpointLtd/tls_prober.git
 git clone https://github.com/sensepost/jack.git
 git clone https://github.com/sqlmapproject/sqlmap.git
+git clone https://github.com/tcstool/NoSQLMap.git
+git clone https://github.com/Dionach/CMSmap
+git clone https://github.com/wpscanteam/wpscan.git
 
 # Shellcode
 mkdir -p $dir/shellcode
@@ -96,6 +148,11 @@ git clone https://github.com/Veil-Framework/Veil.git
 git clone https://github.com/pentestmonkey/perl-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-findsock-shell.git
+git clone https://github.com/secretsquirrel/the-backdoor-factory /opt/the-backdoorfactory
+	cd the-backdoor-factory
+	./install.sh
+	cd ..
+
 
 # Exploits
 mkdir -p $dir/exploits
@@ -109,6 +166,18 @@ git clone https://github.com/pwnwiki/pwnwiki-tools.git
 git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/pentestmonkey/unix-privesc-check.git
 git clone https://github.com/pentestmonkey/exploit-suggester.git
+git clone https://github.com/brav0hax/smbexec.git
+	echo "Select 1 - Debian/Ubuntu, Select all defaults"
+	cd ./smbexec && ./install.sh
+	echo "Select 4 to compile smbexec binaries, select 5 to exit"
+	./install.sh
+	cd ..	
+wget http://www.ampliasecurity.com/research/wce_v1_41beta_universal.zip
+	unzip -d ./wce wce_v1_41beta_universal.zip
+wget http://blog.gentilkiwi.com/downloads/mimikatz_trunk.zip
+	unzip -d./mimikatz mimikatz_trunk.zip
+git clone https://github.com/MooseDojo/praedasploit
+
 
 # PostExploit
 mkdir -p $dir/post
@@ -122,6 +191,14 @@ cd Empire
 cd setup
 ./install.sh
 cd ..
+git clone https://github.com/mattifestation/PowerSploit.git
+git clone https://github.com/samratashok/nishang
+cd PowerSploit
+wget https://raw.github.com/obscuresec/random/master/StartListener.py
+wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
+cd ..
+
+
 cd ..
 
 # Wordlists
@@ -142,16 +219,20 @@ git clone https://github.com/kost/nanomet.git
 git clone https://github.com/SherifEldeeb/TinyMet.git
 git clone https://github.com/dirtyfilthy/metassh.git
 
-# Powershell
-#mkdir -p $dir/Powershell
-#cd $dir/Powershell
-#git clone https://github.com/PoshSec/PoshSec.git
+# THP
+# The Hacker Playbook 2 - Custom Scripts
+mkdir -p $dir/THP
+cd $dir/THP
+git clone https://github.com/cheetz/Easy-P.git
+git clone https://github.com/cheetz/Password_Plus_One
+git clone https://github.com/cheetz/PowerShell_Popup
+git clone https://github.com/cheetz/icmpshock
+git clone https://github.com/cheetz/brutescrape
+git clone https://www.github.com/cheetz/reddit_xss
+git clone https://github.com/cheetz/PowerSploit
+git clone https://github.com/cheetz/PowerTools
+git clone https://github.com/cheetz/nishang
 
-# Spiderlabs
-mkdir -p $dir/spiderlabs
-cd $dir/spiderlabs
-git clone https://github.com/SpiderLabs/Responder.git
-git clone https://github.com/SpiderLabs/oracle_pwd_tools.git
 
 
 # Trusted Sec

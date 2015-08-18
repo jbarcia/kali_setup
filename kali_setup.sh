@@ -1,6 +1,6 @@
 #!/bin/bash
 # Kali Build Script
-# July 20, 2015
+# August 17, 2015
 
 proc=0
 arm=0
@@ -19,13 +19,32 @@ elif [[ "$(uname -m)" == *"arm"* ]]; then
 fi
 echo "==========================="
 
+# Initial Setup
+echo "Is this an initial setup? (Y/N)"
+read -p ""
+	if [ "$REPLY" == "y" -o "$REPLY" == "Y" ]; then
+	# Change Hostname
+	# SEP0023EB54B953
+	hostname "SEP0023EB54B953"
+	cat /etc/hosts | sed s/"kali"/"SEP0023EB54B953"/ > /tmp/newhosts
+	mv /tmp/newhosts /etc/hosts
+	cat /etc/hostname | sed s/"kali"/"SEP0023EB54B953"/ > /tmp/newhostname
+	mv /tmp/newhostname /etc/hostname
+	# Change Password
+	passwd
+fi
+
 echo "==========================="
 echo "Updating"
 echo "==========================="
 apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
 #Add dependencies
-apt-get remove python-pypcap && apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2 unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller filezilla filezilla-common golang remmina ruby-dev libpcap-dev
+apt-get remove python-pypcap && apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2 unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller filezilla filezilla-common golang remmina ruby-dev libpcap-dev beef-xss python-elixir ldap-utils rwho rsh-client x11-apps finger
+
+service postgresql start
+update-rc.d postgresql enable
+echo "spool /root/msf_console.`date +%m-%d-%Y_%H-%M-%S`.log" > /root/.msf4/msfconsole.rc
 
 mkdir /mnt/share
 
@@ -65,8 +84,28 @@ elif [ $proc == 64 ]; then
 	dpkg -i loki_0.2.7-1_amd64.deb
 fi
 #########################################
-
 cd ..
+
+#########################################
+# SublimeText Setup
+if [ $arm == 0 ]; then 
+	echo "==========================="
+	echo "SublimeText Setup"
+	echo "==========================="
+	cd sublime_debs
+fi
+
+# x86
+if [ $proc == 32 ]; then 
+	dpkg -i sublime-text_build-3083_i386.deb
+# x64
+elif [ $proc == 64 ]; then
+	dpkg -i sublime-text_build-3083_amd64.deb
+fi
+#########################################
+cd ..
+
+
 echo "==========================="
 echo "Github Dump"
 echo "==========================="
@@ -152,6 +191,16 @@ if [ $proc == 64 ]; then
 fi
 
 #########################################
+
+wget http://www.secmaniac.com/files/bypassuac.zip
+unzip bypassuac.zip
+cp bypassuac/bypassuac.rb/opt/metasploit/apps/pro/msf3/scripts/meterpreter/
+mv bypassuac/uac//opt/metasploit/apps/pro/msf3/data/exploits/
+
+cd/usr/share/nmap/scripts/
+wget https://raw.github.com/hdm/scan-tools/master/nse/banner-plus.nse
+
+
 echo "==========================="
 echo "END"
 echo "==========================="
