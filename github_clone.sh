@@ -53,7 +53,7 @@ git clone https://github.com/breenmachine/httpscreenshot.git
 	chmod +x install-dependencies.sh && ./install-dependencies.sh
 	cd ..
 git clone https://github.com/robertdavidgraham/masscan.git
-	cd /opt/masscan
+	cd ./masscan
 	make
 	make install
 	cd ..
@@ -187,18 +187,16 @@ git clone https://github.com/mubix/post-exploitation.git
 git clone https://github.com/pentestmonkey/pysecdump.git
 git clone https://github.com/PoshSec/PoshSec.git
 git clone https://github.com/PowerShellEmpire/Empire.git
-cd Empire
-cd setup
-./install.sh
-cd ..
+	cd Empire
+	cd setup
+	./install.sh
+	cd ..
 git clone https://github.com/mattifestation/PowerSploit.git
 git clone https://github.com/samratashok/nishang
-cd PowerSploit
-wget https://raw.github.com/obscuresec/random/master/StartListener.py
-wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
-cd ..
-
-
+	cd PowerSploit
+	wget https://raw.github.com/obscuresec/random/master/StartListener.py
+	wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
+	cd ..
 cd ..
 
 # Wordlists

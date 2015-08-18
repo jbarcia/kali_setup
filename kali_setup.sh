@@ -40,8 +40,9 @@ echo "==========================="
 apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
 #Add dependencies
-apt-get remove python-pypcap && apt-get -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2 unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller filezilla filezilla-common golang remmina ruby-dev libpcap-dev beef-xss python-elixir ldap-utils rwho rsh-client x11-apps finger
-
+apt-get remove python-pypcap && apt-get -f -y install cifs-utils libssh2-1 libssh2-1-dev libgnutls-dev python-libpcap conntrack mingw32 terminator shutter screen tmux python-support libdumbnet1 python-ipy python-glade2 unrar unace rar unrar p7zip zip unzip p7zip-full p7zip-rar file-roller filezilla filezilla-common golang remmina ruby-dev libpcap-dev beef-xss python-elixir ldap-utils rwho rsh-client x11-apps finger
+apt-get -f install
+apt-get -y upgrade
 service postgresql start
 update-rc.d postgresql enable
 echo "spool /root/msf_console.`date +%m-%d-%Y_%H-%M-%S`.log" > /root/.msf4/msfconsole.rc
