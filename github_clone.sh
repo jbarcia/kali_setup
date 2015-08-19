@@ -144,6 +144,7 @@ git clone https://github.com/addenial/ps1encode.git
 git clone https://github.com/Veil-Framework/Veil.git
 	cd Veil
 	./Install.sh -c
+	python update.py
 	cd ..
 git clone https://github.com/pentestmonkey/perl-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-reverse-shell.git

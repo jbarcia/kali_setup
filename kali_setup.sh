@@ -204,5 +204,13 @@ wget https://raw.github.com/hdm/scan-tools/master/nse/banner-plus.nse
 
 echo "==========================="
 echo "END"
+echo ""
+echo "Configure Gitrob"	
+echo "service postgresql start"
+echo "su postgres"
+echo "createuser -s gitrob --pwprompt"
+echo "createdb -O gitrob gitrob"
+echo "exit"
+
 echo "==========================="
 cd ~
