@@ -59,17 +59,12 @@ git clone https://github.com/robertdavidgraham/masscan.git
 	cd ..
 git clone https://github.com/michenriksen/gitrob.git
 	gem install bundler
-	service postgresql start
-	su postgres
-	createuser -s gitrob --pwprompt
-	createdb -O gitrob gitrob
-	exit
 	cd ./gitrob/bin
 	gem install gitrob
 	cd ..
 git clone https://github.com/ChrisTruncer/EyeWitness.git
 git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git
-git clone https://github.com/secforce/sparta.git /opt/sparta
+git clone https://github.com/secforce/sparta.git
 mkdir ./spiderfoot/ && cd ./spiderfoot
 	wget http://sourceforge.net/projects/spiderfoot/files/spiderfoot-2.3.0-src.tar.gz/download
 	tar xzvf download
@@ -149,7 +144,7 @@ git clone https://github.com/Veil-Framework/Veil.git
 git clone https://github.com/pentestmonkey/perl-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-findsock-shell.git
-git clone https://github.com/secretsquirrel/the-backdoor-factory /opt/the-backdoorfactory
+git clone https://github.com/secretsquirrel/the-backdoor-factory
 	cd the-backdoor-factory
 	./install.sh
 	cd ..
