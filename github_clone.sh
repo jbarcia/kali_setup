@@ -2,6 +2,7 @@
 # Script to create and download GitHub scripts and customize kali
 
 dir=/root/github
+apt-get -f install
 
 mkdir -p $dir
 cd $dir
@@ -61,7 +62,7 @@ git clone https://github.com/robertdavidgraham/masscan.git
 git clone https://github.com/michenriksen/gitrob.git
 	cd ./gitrob/bin
 	gem install gitrob
-	cd ..
+	cd .. && cd ..
 git clone https://github.com/ChrisTruncer/EyeWitness.git
 git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git
 git clone https://github.com/secforce/sparta.git
@@ -74,7 +75,7 @@ mkdir ./spiderfoot/ && cd ./spiderfoot
 	pip install cherrypy
 	pip install mako
 	cd ..
-
+apt-get -f install
 
 
 # Passwords
@@ -109,6 +110,7 @@ git clone https://github.com/evilsocket/bettercap
 	gem build bettercap.gemspec
 	sudo gem install bettercap*.gem
 	cd ..
+apt-get -f install
 
 # Wifi
 mkdir -p $dir/wifi
@@ -148,7 +150,7 @@ git clone https://github.com/secretsquirrel/the-backdoor-factory
 	cd the-backdoor-factory
 	./install.sh
 	cd ..
-
+apt-get -f install
 
 # Exploits
 mkdir -p $dir/exploits
@@ -173,7 +175,7 @@ wget http://www.ampliasecurity.com/research/wce_v1_41beta_universal.zip
 wget http://blog.gentilkiwi.com/downloads/mimikatz_trunk.zip
 	unzip -d./mimikatz mimikatz_trunk.zip
 git clone https://github.com/MooseDojo/praedasploit
-
+apt-get -f install
 
 # PostExploit
 mkdir -p $dir/post
@@ -194,6 +196,7 @@ git clone https://github.com/samratashok/nishang
 	wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
 	cd ..
 cd ..
+apt-get -f install
 
 # Wordlists
 mkdir -p $dir/wordlists
