@@ -48,6 +48,7 @@ update-rc.d postgresql enable
 echo "spool /root/msf_console.`date +%m-%d-%Y_%H-%M-%S`.log" > /root/.msf4/msfconsole.rc
 
 mkdir /mnt/share
+gem install bundler
 
 # cp -R /usr/share/doc/python-impacket-doc/examples/smbrelayx /toolslinux/exploits/impacket/impacket/
 gem install nmap-parser

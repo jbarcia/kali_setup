@@ -39,6 +39,7 @@ git clone https://github.com/pentestmonkey/gateway-finder.git
 git clone https://github.com/leebaird/discover.git
 	cd discover/
 	./setup.sh
+	ln -s /root/github/recon/discover /opt/
 	cd ..
 git clone https://bitbucket.org/LaNMaSteR53/peepingtom.git
 	cd ./peepingtom/
@@ -58,7 +59,6 @@ git clone https://github.com/robertdavidgraham/masscan.git
 	make install
 	cd ..
 git clone https://github.com/michenriksen/gitrob.git
-	gem install bundler
 	cd ./gitrob/bin
 	gem install gitrob
 	cd ..
