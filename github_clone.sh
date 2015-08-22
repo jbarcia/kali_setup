@@ -181,6 +181,8 @@ apt-get -f install
 mkdir -p $dir/post
 cd $dir/post
 git clone https://github.com/ShawnDEvans/smbmap.git
+git clone https://github.com/byt3bl33d3r/CrackMapExec.git
+git clone https://github.com/T-S-A/smbspider.git
 git clone https://github.com/mubix/post-exploitation.git
 git clone https://github.com/pentestmonkey/pysecdump.git
 git clone https://github.com/PoshSec/PoshSec.git
