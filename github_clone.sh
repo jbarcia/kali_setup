@@ -18,9 +18,9 @@ git clone https://github.com/pentestmonkey/yaptest.git
 
 
 # Crowe
-git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
-ln -s /root/github/Crowe-Scripts/toolslinux /
-ln -s /root/github/Crowe-Scripts/toolsv3 /
+#git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
+#ln -s /root/github/Crowe-Scripts/toolslinux /
+#ln -s /root/github/Crowe-Scripts/toolsv3 /
 
 # Recon
 mkdir -p $dir/recon
@@ -37,6 +37,7 @@ git clone https://github.com/pentestmonkey/finger-user-enum.git
 git clone https://github.com/pentestmonkey/ftp-user-enum.git
 git clone https://github.com/pentestmonkey/ident-user-enum.git
 git clone https://github.com/pentestmonkey/gateway-finder.git
+git clone https://github.com/jwalker/SIRT.git
 git clone https://github.com/leebaird/discover.git
 	cd discover/
 	./setup.sh
