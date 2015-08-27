@@ -3295,6 +3295,8 @@ dpkg -i /tmp/shareenum.deb
 
 ##### Install John the Ripper Community Enhanced Version
 apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+apt-get -y -qq install libssl-dev || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+apt-get -y -qq openssl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
 if [ $arm == 0 ]; then 
   curl --progress -k -L -f "http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.gz" > /tmp/john-1.8.0-jumbo-1.tar.gz || echo -e ' '${RED}'[!]'${RESET}" Issue downloading JTR Community" 1>&2   #***!!! hardcoded version! Need to manually check for updates
   cd /tmp
@@ -3380,6 +3382,29 @@ chmod +x configure
 #  apt-get install ia32-libs
 #  cp pth-wmi/kaliwmis-32 /usr/sbin/kaliwmis-32
 #fi
+
+
+cat <<EOF > /root/Desktop/Network.txt
+macchanger -l|grep -i Cisco
+macchanger -l|grep -i VMWare
+
+
+DHCP
+ifconfig <interface> down
+macchanger --mac=XX:XX:XX:XX:XX:XX <interface>
+ifconfig <interface> up
+dhclient <interface>
+
+
+STATIC
+ifconfig <interface> down
+macchanger --mac=XX:XX:XX:XX:XX:XX <interface>
+ifconfig <interface> <IP_Address> netmask 255.255.255.0 broadcast <IP_Address>.255
+echo "nameserver <DNS_SERVER>" >> /etc/resolv.conf
+route add default gw <GATEWAY_Address>
+ifconfig <interface> up
+
+EOF
 
 
 

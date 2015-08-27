@@ -25,7 +25,7 @@ git clone https://github.com/pentestmonkey/yaptest.git
 # Recon
 mkdir -p $dir/recon
 cd $dir/recon
-git clone https://github.com/jbarcia/Recon.git
+git clone https://github.com/jbarcia/recon.git
 git clone https://github.com/mubix/resolvequick.git
 # git clone https://github.com/jbarcia/User-Enumeration.git
 git clone https://github.com/smicallef/spiderfoot.git
@@ -168,8 +168,8 @@ git clone https://github.com/pentestmonkey/exploit-suggester.git
 git clone https://github.com/brav0hax/smbexec.git
 	echo "Select 1 - Debian/Ubuntu, Select all defaults"
 	cd ./smbexec && ./install.sh
-	echo "Select 4 to compile smbexec binaries, select 5 to exit"
-	./install.sh
+#	echo "Select 4 to compile smbexec binaries, select 5 to exit"
+#	./install.sh
 	cd ..	
 wget http://www.ampliasecurity.com/research/wce_v1_41beta_universal.zip
 	unzip -d ./wce wce_v1_41beta_universal.zip
