@@ -924,6 +924,7 @@ GeometryHeight=618
 SortColumn=name
 SortOrder=ascending
 EOF
+mkdir -p /root/Desktop/Screenshots
 dconf write /org/gnome/nautilus/preferences/show-hidden-files true
 file=/root/.gtk-bookmarks; [ -e "${file}" ] && cp -n $file{,.bkup}
 ([[ -e "${file}" && "$(tail -c 1 $file)" != "" ]]) && echo >> "${file}"
@@ -936,6 +937,7 @@ grep -q '^file:///var/ftp ' "${file}" 2>/dev/null || echo 'file:///var/ftp FTP' 
 grep -q '^file:///var/samba ' "${file}" 2>/dev/null || echo 'file:///var/samba Samba' >> "${file}"
 grep -q '^file:///var/tftp ' "${file}" 2>/dev/null || echo 'file:///var/tftp TFTP' >> "${file}"
 grep -q '^file:///var/www ' "${file}" 2>/dev/null || echo 'file:///var/www WWW' >> "${file}"
+grep -q '^file:///root/Desktop/Screenshots ' "${file}" 2>/dev/null || echo 'file:///root/Desktop/Screenshots Screenshots' >> "${file}"
 
 
 ##### Configure GNOME terminal   Note: need to restart xserver for effect
@@ -2039,6 +2041,9 @@ curl -s -L https://asciinema.org/install | sh
 ##### Install shutter
 echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}shutter${RESET} ~ GUI static screen capture"
 apt-get -y -qq install shutter || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+##### Configure Shutter
+# shutter -f -C -e      Shutter Full Screen
+# shutter -a -C -e      Shutter Active Window 
 
 
 ##### Install gdebi
@@ -3293,6 +3298,8 @@ fi
 dpkg -i /tmp/shareenum.deb
 
 
+
+################################ Install Work Specific Tools ################################
 ##### Install John the Ripper Community Enhanced Version
 apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
 apt-get -y -qq install libssl-dev || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
@@ -3313,8 +3320,7 @@ if [ $arm == 0 ]; then
   #john --test
 fi
 
-
-##### Install Work Specific Tools
+##### Install Work Specific Scripts
 # Github download
 cd $gitdir
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
@@ -3340,8 +3346,6 @@ cp dshashes.py NTDSXtract\ 1.0/dshashes.py
 cd libesedb-20120102
 chmod +x configure
 ./configure && make
-
-
 
 ###### Loki Setup
 #apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
@@ -3374,7 +3378,6 @@ chmod +x configure
 #  dpkg -i loki_0.2.7-1_amd64.deb
 #fi
 
-
 ##### Install 32 bit libraries for wmic.py
 #if [ $proc == 64 ]; then 
 #  dpkg --add-architecture i386
@@ -3382,6 +3385,10 @@ chmod +x configure
 #  apt-get install ia32-libs
 #  cp pth-wmi/kaliwmis-32 /usr/sbin/kaliwmis-32
 #fi
+
+#############################################################################################
+
+
 
 
 cat <<EOF > /root/Desktop/Network.txt
