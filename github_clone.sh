@@ -4,6 +4,14 @@
 dir=/root/github
 apt-get -f install
 
+###############  EMPIRE INSTALL  ####################
+cd /root/
+git clone https://github.com/PowerShellEmpire/Empire.git
+	cd Empire
+	cd setup
+	./install.sh
+#####################################################
+
 mkdir -p $dir
 cd $dir
 
@@ -13,14 +21,18 @@ git clone https://github.com/jbarcia/Misc.git
 # git clone https://github.com/jbarcia/g0tmi1k.git
 git clone https://github.com/offensive-security/kali-linux-recipes.git
 git clone https://github.com/mubix/8021xbridge.git
+git clone https://github.com/Warpnet/BitM.git
 git clone https://github.com/jbarcia/ducky.git
 git clone https://github.com/pentestmonkey/yaptest.git
+git clone https://github.com/Plazmaz/Duckuino.git
 
 
 # Crowe
-#git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
-#ln -s /root/github/Crowe-Scripts/toolslinux /
-#ln -s /root/github/Crowe-Scripts/toolsv3 /
+git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
+ln -s /root/github/Crowe-Scripts/toolslinux /
+ln -s /root/github/Crowe-Scripts/toolsv3 /
+ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/ /var/www/html/1
+ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/ /usr/share/mana-toolkit/www/portal/1
 
 # Recon
 mkdir -p $dir/recon
@@ -29,15 +41,10 @@ git clone https://github.com/jbarcia/recon.git
 git clone https://github.com/mubix/resolvequick.git
 # git clone https://github.com/jbarcia/User-Enumeration.git
 git clone https://github.com/smicallef/spiderfoot.git
-git clone https://github.com/pentestmonkey/timing-attack-checker.git
-git clone https://github.com/pentestmonkey/dns-grind.git
-git clone https://github.com/pentestmonkey/rsh-grind.git
-git clone https://github.com/pentestmonkey/smtp-user-enum.git
-git clone https://github.com/pentestmonkey/finger-user-enum.git
-git clone https://github.com/pentestmonkey/ftp-user-enum.git
-git clone https://github.com/pentestmonkey/ident-user-enum.git
-git clone https://github.com/pentestmonkey/gateway-finder.git
-git clone https://github.com/jwalker/SIRT.git
+git clone https://github.com/FreedomCoder/esearchy.git
+git clone https://github.com/elceef/dnstwist.git
+git clone https://github.com/nccgroup/typofinder.git
+git clone https://github.com/WestpointLtd/tls_prober.git
 git clone https://github.com/leebaird/discover.git
 	cd discover/
 	./setup.sh
@@ -78,6 +85,19 @@ mkdir ./spiderfoot/ && cd ./spiderfoot
 	cd ..
 apt-get -f install
 
+# Assessment
+mkdir -p $dir/assessment
+cd $dir/assessment
+git clone https://github.com/quentinhardy/odat.git
+git clone https://github.com/pentestmonkey/timing-attack-checker.git
+git clone https://github.com/pentestmonkey/dns-grind.git
+git clone https://github.com/pentestmonkey/rsh-grind.git
+git clone https://github.com/pentestmonkey/smtp-user-enum.git
+git clone https://github.com/pentestmonkey/finger-user-enum.git
+git clone https://github.com/pentestmonkey/ftp-user-enum.git
+git clone https://github.com/pentestmonkey/ident-user-enum.git
+git clone https://github.com/pentestmonkey/gateway-finder.git
+git clone https://github.com/jwalker/SIRT.git
 
 # Passwords
 mkdir -p $dir/passwords
@@ -86,10 +106,11 @@ git clone https://github.com/byt3bl33d3r/pth-toolkit.git
 git clone https://github.com/DanMcInerney/net-creds.git
 git clone https://github.com/Neohapsis/creddump7.git
 git clone https://github.com/RandomStorm/RSMangler.git
+git clone https://github.com/zeroskill/transmute.git
 git clone https://github.com/HarmJ0y/ImpDump.git
 git clone https://github.com/SpiderLabs/oracle_pwd_tools.git
-git clone https://github.com/DanMcInerney/net-creds.git
 git clone https://github.com/SpiderLabs/Responder.git
+git clone https://github.com/urbanesec/ZackAttack.git
 
 # IPv6
 mkdir -p $dir/ipv6
@@ -102,16 +123,28 @@ git clone https://github.com/vanhauser-thc/thc-ipv6.git
 mkdir -p $dir/mitm
 cd $dir/mitm
 git clone https://github.com/jbarcia/MiTM-CaptivePortal.git
+git clone https://github.com/purpleteam/snarf.git
 git clone https://github.com/byt3bl33d3r/MITMf.git
 git clone https://github.com/brav0hax/easy-creds.git
 git clone https://github.com/CylanceSPEAR/SMBTrap.git
+git clone https://github.com/GDSSecurity/BadSamba.git
 git clone https://github.com/hatRiot/zarp.git
+git clone https://github.com/citronneur/rdpy.git
+git clone https://github.com/ElevenPaths/EvilFOCA.git
+git clone https://github.com/infobyte/evilgrade.git
 git clone https://github.com/evilsocket/bettercap
 	cd bettercap
 	gem build bettercap.gemspec
 	sudo gem install bettercap*.gem
 	cd ..
 apt-get -f install
+
+
+# mobile
+mkdir -p $dir/mobile
+cd $dir/mobile
+git clone https://github.com/iSECPartners/Android-SSL-TrustKiller.git
+
 
 # Wifi
 mkdir -p $dir/wifi
@@ -122,18 +155,23 @@ git clone https://github.com/derv82/wifite.git
 git clone https://github.com/lostincynicism/FuzzAP.git
 git clone https://github.com/SilverFoxx/PwnSTAR.git
 git clone https://github.com/TigerSecurity/gerix-wifi-cracker.git
+git clone https://github.com/lostincynicism/FuzzAP.git
 
 
 # Web
 mkdir -p $dir/web
 cd $dir/web
-git clone https://github.com/jbarcia/Web-Shells.git
-git clone https://github.com/WestpointLtd/tls_prober.git
 git clone https://github.com/sensepost/jack.git
 git clone https://github.com/sqlmapproject/sqlmap.git
 git clone https://github.com/tcstool/NoSQLMap.git
+git clone https://github.com/torque59/Nosql-Exploitation-Framework.git
+git clone https://github.com/Netflix/sleepy-puppy.git
 git clone https://github.com/Dionach/CMSmap
 git clone https://github.com/wpscanteam/wpscan.git
+git clone https://github.com/1N3/XSSTracer.git
+git clone https://github.com/beefproject/beef.git
+git clone https://github.com/CookieCadger/CookieCadger.git
+git clone https://github.com/ptigas/simple-captcha-solver.git
 
 # Shellcode
 mkdir -p $dir/shellcode
@@ -144,14 +182,29 @@ git clone https://github.com/Veil-Framework/Veil.git
 	./Install.sh -c
 	python update.py
 	cd ..
+git clone https://github.com/jbarcia/Web-Shells.git
 git clone https://github.com/pentestmonkey/perl-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-findsock-shell.git
+git clone https://github.com/inquisb/icmpsh.git 
+git clone https://github.com/iagox86/dnscat2.git
+git clone https://github.com/epinna/weevely3.git
+git clone https://github.com/CroweCybersecurity/DNSEncode.git
+git clone https://github.com/Ben0xA/AwesomerShell.git
+git clone https://github.com/n1nj4sec/pupy.git
 git clone https://github.com/secretsquirrel/the-backdoor-factory
 	cd the-backdoor-factory
 	./install.sh
 	cd ..
 apt-get -f install
+
+# Exfiltration
+mkdir -p $dir/Exfiltration
+cd $dir/Exfiltration
+git clone https://github.com/3nc0d3r/NaishoDeNusumu.git
+git clone https://github.com/m57/dnsteal.git
+git clone https://github.com/ytisf/PyExfil.git
+git clone https://github.com/radman404/DNSSUB.git
 
 # Exploits
 mkdir -p $dir/exploits
@@ -159,10 +212,13 @@ cd $dir/exploits
 git clone https://github.com/bidord/pykek.git
 git clone https://github.com/jbarcia/priv-escalation.git
 git clone https://github.com/CoreSecurity/impacket.git
+git clone https://github.com/trustedsec/spraywmi.git
 git clone https://github.com/CISOfy/lynis.git
+git clone https://github.com/Yelp/osxcollector.git
 git clone https://github.com/sensepost/BiLE-suite.git
 git clone https://github.com/pwnwiki/pwnwiki-tools.git
 git clone https://github.com/pentestmonkey/windows-privesc-check.git
+git clone https://github.com/stasinopoulos/commix.git
 git clone https://github.com/pentestmonkey/unix-privesc-check.git
 git clone https://github.com/pentestmonkey/exploit-suggester.git
 git clone https://github.com/brav0hax/smbexec.git
@@ -178,6 +234,34 @@ wget http://blog.gentilkiwi.com/downloads/mimikatz_trunk.zip
 git clone https://github.com/MooseDojo/praedasploit
 apt-get -f install
 
+# Powershell
+mkdir -p $dir/powershell
+cd $dir/powershell
+git clone https://github.com/kfosaaen/Get-LAPSPasswords.git
+git clone https://github.com/Kevin-Robertson/Inveigh.git
+git clone https://github.com/samratashok/nishang.git
+git clone https://github.com/PowerShellEmpire/PowerTools.git
+git clone https://github.com/darkoperator/Posh-NVS.git
+git clone https://github.com/darkoperator/Posh-SecMod.git
+git clone https://github.com/darkoperator/Posh-Shodan.git
+git clone https://github.com/PoshSec/PoshSec.git
+git clone https://github.com/besimorhino/powercat.git
+git clone https://github.com/mattifestation/PowerSploit.git
+git clone https://github.com/NetSPI/PS_MultiCrack.git
+git clone https://github.com/NetSPI/Powershell-Modules.git
+git clone https://github.com/NetSPI/PowerShell.git
+git clone https://github.com/psget/psget.git
+git clone https://github.com/NytroRST/NetRipper.git
+git clone https://github.com/HarmJ0y/Misc-PowerShell.git
+git clone https://github.com/nullbind/Powershellery.git
+git clone https://github.com/enigma0x3/Invoke-AltDSBackdoor.git
+git clone https://github.com/enigma0x3/Generate-Macro.git
+git clone https://github.com/secabstraction/WmiSploit.git
+git clone https://github.com/jseidl/Babadook.git
+	wget https://raw.github.com/obscuresec/random/master/StartListener.py
+	wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
+#ln -s /root/github/powershell /var/www
+
 # PostExploit
 mkdir -p $dir/post
 cd $dir/post
@@ -185,19 +269,8 @@ git clone https://github.com/ShawnDEvans/smbmap.git
 git clone https://github.com/byt3bl33d3r/CrackMapExec.git
 git clone https://github.com/T-S-A/smbspider.git
 git clone https://github.com/mubix/post-exploitation.git
+git clone https://github.com/hfiref0x/UACME.git
 git clone https://github.com/pentestmonkey/pysecdump.git
-git clone https://github.com/PoshSec/PoshSec.git
-git clone https://github.com/PowerShellEmpire/Empire.git
-	cd Empire
-	cd setup
-	./install.sh
-	cd ..
-git clone https://github.com/mattifestation/PowerSploit.git
-git clone https://github.com/samratashok/nishang
-	cd PowerSploit
-	wget https://raw.github.com/obscuresec/random/master/StartListener.py
-	wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
-	cd ..
 cd ..
 apt-get -f install
 
@@ -205,12 +278,16 @@ apt-get -f install
 mkdir -p $dir/wordlists
 cd $dir/wordlists
 git clone https://github.com/danielmiessler/SecLists.git
+git clone https://github.com/danielmiessler/RobotsDisallowed.git
+git clone https://github.com/pwnwiki/webappurls.git
+
 
 # Metasploit Modules
 mkdir -p $dir/metasploit
 cd $dir/metasploit
 git clone https://github.com/pwnwiki/q.git
 ln -s /root/github/Crowe-Scripts/metasploit_modules $dir/metasploit
+ln -s $dir/powershell/NetRipper/Metasploit/ $dir/metasploit/NetRipper/
 
 # Meterpreter Shells
 mkdir -p $dir/meterpreter
