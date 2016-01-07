@@ -41,7 +41,7 @@ git clone https://github.com/jbarcia/recon.git
 git clone https://github.com/mubix/resolvequick.git
 # git clone https://github.com/jbarcia/User-Enumeration.git
 git clone https://github.com/smicallef/spiderfoot.git
-git clone https://github.com/FreedomCoder/esearchy.git
+git clone https://github.com/FreedomCoder/esearchy_mirai.git
 git clone https://github.com/elceef/dnstwist.git
 git clone https://github.com/nccgroup/typofinder.git
 git clone https://github.com/WestpointLtd/tls_prober.git
@@ -172,6 +172,7 @@ git clone https://github.com/1N3/XSSTracer.git
 git clone https://github.com/beefproject/beef.git
 git clone https://github.com/CookieCadger/CookieCadger.git
 git clone https://github.com/ptigas/simple-captcha-solver.git
+git clone https://github.com/1N3/Wordpress-XMLRPC-Brute-Force-Exploit.git
 
 # Shellcode
 mkdir -p $dir/shellcode
@@ -209,6 +210,7 @@ git clone https://github.com/radman404/DNSSUB.git
 # Exploits
 mkdir -p $dir/exploits
 cd $dir/exploits
+git clone https://github.com/1N3/Sn1per.git
 git clone https://github.com/bidord/pykek.git
 git clone https://github.com/jbarcia/priv-escalation.git
 git clone https://github.com/CoreSecurity/impacket.git
@@ -221,6 +223,7 @@ git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/stasinopoulos/commix.git
 git clone https://github.com/pentestmonkey/unix-privesc-check.git
 git clone https://github.com/pentestmonkey/exploit-suggester.git
+git clone https://github.com/rebootuser/LinEnum.git
 git clone https://github.com/brav0hax/smbexec.git
 	echo "Select 1 - Debian/Ubuntu, Select all defaults"
 	cd ./smbexec && ./install.sh
