@@ -25,6 +25,7 @@ git clone https://github.com/Warpnet/BitM.git
 git clone https://github.com/jbarcia/ducky.git
 git clone https://github.com/pentestmonkey/yaptest.git
 git clone https://github.com/Plazmaz/Duckuino.git
+git cone https://jbarcia@github.com/CroweCybersecurity/pen-random-scripts.git
 
 
 # Crowe
@@ -37,12 +38,13 @@ ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/ /usr/share/mana-tool
 # Recon
 mkdir -p $dir/recon
 cd $dir/recon
-git clone https://github.com/jbarcia/recon.git
+git clone https://jbarcia@github.com/jbarcia/recon.git
 git clone https://github.com/mubix/resolvequick.git
 # git clone https://github.com/jbarcia/User-Enumeration.git
 git clone https://github.com/smicallef/spiderfoot.git
 git clone https://github.com/FreedomCoder/esearchy_mirai.git
 git clone https://github.com/elceef/dnstwist.git
+git clone https://jbarcia@github.com/CroweCybersecurity/ad-ldap-enum.git
 git clone https://github.com/nccgroup/typofinder.git
 git clone https://github.com/WestpointLtd/tls_prober.git
 git clone https://github.com/leebaird/discover.git
@@ -98,6 +100,7 @@ git clone https://github.com/pentestmonkey/ftp-user-enum.git
 git clone https://github.com/pentestmonkey/ident-user-enum.git
 git clone https://github.com/pentestmonkey/gateway-finder.git
 git clone https://github.com/jwalker/SIRT.git
+git clone https://jbarcia@github.com/CroweCybersecurity/go-sshscan.git
 
 # Passwords
 mkdir -p $dir/passwords
@@ -156,6 +159,7 @@ git clone https://github.com/lostincynicism/FuzzAP.git
 git clone https://github.com/SilverFoxx/PwnSTAR.git
 git clone https://github.com/TigerSecurity/gerix-wifi-cracker.git
 git clone https://github.com/lostincynicism/FuzzAP.git
+git clone https://github.com/P0cL4bs/WiFi-Pumpkin.git
 
 
 # Web
@@ -190,7 +194,7 @@ git clone https://github.com/pentestmonkey/php-findsock-shell.git
 git clone https://github.com/inquisb/icmpsh.git 
 git clone https://github.com/iagox86/dnscat2.git
 git clone https://github.com/epinna/weevely3.git
-git clone https://github.com/CroweCybersecurity/DNSEncode.git
+git clone https://jbarcia@github.com/CroweCybersecurity/DNSEncode.git
 git clone https://github.com/Ben0xA/AwesomerShell.git
 git clone https://github.com/n1nj4sec/pupy.git
 git clone https://github.com/secretsquirrel/the-backdoor-factory
@@ -211,6 +215,8 @@ git clone https://github.com/radman404/DNSSUB.git
 mkdir -p $dir/exploits
 cd $dir/exploits
 git clone https://github.com/1N3/Sn1per.git
+git clone https://github.com/breenmachine/Potato.git
+git clone https://github.com/g0tmi1k/mpc.git
 git clone https://github.com/bidord/pykek.git
 git clone https://github.com/jbarcia/priv-escalation.git
 git clone https://github.com/CoreSecurity/impacket.git
@@ -252,6 +258,7 @@ git clone https://github.com/besimorhino/powercat.git
 git clone https://github.com/mattifestation/PowerSploit.git
 git clone https://github.com/NetSPI/PS_MultiCrack.git
 git clone https://github.com/NetSPI/Powershell-Modules.git
+git clone https://jbarcia@github.com/CroweCybersecurity/pen-powerpen.git
 git clone https://github.com/NetSPI/PowerShell.git
 git clone https://github.com/psget/psget.git
 git clone https://github.com/NytroRST/NetRipper.git
@@ -269,6 +276,7 @@ git clone https://github.com/jseidl/Babadook.git
 mkdir -p $dir/post
 cd $dir/post
 git clone https://github.com/ShawnDEvans/smbmap.git
+git clone https://jbarcia@github.com/CroweCybersecurity/shareenum.git
 git clone https://github.com/byt3bl33d3r/CrackMapExec.git
 git clone https://github.com/T-S-A/smbspider.git
 git clone https://github.com/mubix/post-exploitation.git
@@ -289,6 +297,7 @@ git clone https://github.com/pwnwiki/webappurls.git
 mkdir -p $dir/metasploit
 cd $dir/metasploit
 git clone https://github.com/pwnwiki/q.git
+git clone https://jbarcia@github.com/CroweCybersecurity/pen-metasploit.git
 ln -s /root/github/Crowe-Scripts/metasploit_modules $dir/metasploit
 ln -s $dir/powershell/NetRipper/Metasploit/ $dir/metasploit/NetRipper/
 
@@ -337,3 +346,9 @@ git clone https://github.com/pwnwiki/kaliwiki.git
 git clone https://github.com/pwnwiki/dfirwiki.git
 git clone https://github.com/pwnwiki/exploitdevwiki.git
 git clone https://github.com/mubix/post-exploitation-wiki.git
+
+
+# Physical Security
+mkdir -p $dir/physical
+cd $dir/physical
+git clone https://jbarcia@github.com/CroweCybersecurity/ravenhid.git
