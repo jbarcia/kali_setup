@@ -22,11 +22,9 @@ git clone https://github.com/jbarcia/Misc.git
 git clone https://github.com/offensive-security/kali-linux-recipes.git
 git clone https://github.com/mubix/8021xbridge.git
 git clone https://github.com/Warpnet/BitM.git
-git clone https://github.com/jbarcia/ducky.git
 git clone https://github.com/pentestmonkey/yaptest.git
-git clone https://github.com/Plazmaz/Duckuino.git
 git cone https://jbarcia@github.com/CroweCybersecurity/pen-random-scripts.git
-
+git clone https://github.com/rofl0r/proxychains-ng.git
 
 # Crowe
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
@@ -34,6 +32,13 @@ ln -s /root/github/Crowe-Scripts/toolslinux /
 ln -s /root/github/Crowe-Scripts/toolsv3 /
 ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/ /var/www/html/1
 ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/ /usr/share/mana-toolkit/www/portal/1
+
+# Ducky
+mkdir -p $dir/ducky
+cd $dir/ducky
+git clone https://github.com/jbarcia/ducky.git
+git clone https://github.com/Plazmaz/Duckuino.git
+git clone https://github.com/byt3bl33d3r/duckhunter.git
 
 # Recon
 mkdir -p $dir/recon
@@ -101,6 +106,8 @@ git clone https://github.com/pentestmonkey/ident-user-enum.git
 git clone https://github.com/pentestmonkey/gateway-finder.git
 git clone https://github.com/jwalker/SIRT.git
 git clone https://jbarcia@github.com/CroweCybersecurity/go-sshscan.git
+git clone https://github.com/1N3/Sn1per.git
+
 
 # Passwords
 mkdir -p $dir/passwords
@@ -170,13 +177,16 @@ git clone https://github.com/sqlmapproject/sqlmap.git
 git clone https://github.com/tcstool/NoSQLMap.git
 git clone https://github.com/torque59/Nosql-Exploitation-Framework.git
 git clone https://github.com/Netflix/sleepy-puppy.git
-git clone https://github.com/Dionach/CMSmap
+git clone https://github.com/Dionach/CMSmap.git
 git clone https://github.com/wpscanteam/wpscan.git
 git clone https://github.com/1N3/XSSTracer.git
+git clone https://github.com/portcullislabs/xssshell-xsstunnell.git
 git clone https://github.com/beefproject/beef.git
 git clone https://github.com/CookieCadger/CookieCadger.git
 git clone https://github.com/ptigas/simple-captcha-solver.git
 git clone https://github.com/1N3/Wordpress-XMLRPC-Brute-Force-Exploit.git
+git clone https://github.com/droope/droopescan.git
+git clone https://github.com/R3dy/parse-burp.git
 
 # Shellcode
 mkdir -p $dir/shellcode
@@ -188,7 +198,9 @@ git clone https://github.com/Veil-Framework/Veil.git
 	python update.py
 	cd ..
 git clone https://github.com/jbarcia/Web-Shells.git
+git clone https://github.com/tennc/webshell.git
 git clone https://github.com/pentestmonkey/perl-reverse-shell.git
+git clone https://github.com/g0tmi1k/mpc.git
 git clone https://github.com/pentestmonkey/php-reverse-shell.git
 git clone https://github.com/pentestmonkey/php-findsock-shell.git
 git clone https://github.com/inquisb/icmpsh.git 
@@ -196,8 +208,10 @@ git clone https://github.com/iagox86/dnscat2.git
 git clone https://github.com/epinna/weevely3.git
 git clone https://jbarcia@github.com/CroweCybersecurity/DNSEncode.git
 git clone https://github.com/Ben0xA/AwesomerShell.git
+git clone https://github.com/Ben0xA/nps.git
+git clone https://github.com/DhavalKapil/icmptunnel.git
 git clone https://github.com/n1nj4sec/pupy.git
-git clone https://github.com/secretsquirrel/the-backdoor-factory
+git clone https://github.com/secretsquirrel/the-backdoor-factory.git
 	cd the-backdoor-factory
 	./install.sh
 	cd ..
@@ -210,26 +224,17 @@ git clone https://github.com/3nc0d3r/NaishoDeNusumu.git
 git clone https://github.com/m57/dnsteal.git
 git clone https://github.com/ytisf/PyExfil.git
 git clone https://github.com/radman404/DNSSUB.git
+git clone https://github.com/infodox/tsh-sctp.git
 
 # Exploits
 mkdir -p $dir/exploits
 cd $dir/exploits
-git clone https://github.com/1N3/Sn1per.git
 git clone https://github.com/breenmachine/Potato.git
-git clone https://github.com/g0tmi1k/mpc.git
 git clone https://github.com/bidord/pykek.git
-git clone https://github.com/jbarcia/priv-escalation.git
 git clone https://github.com/CoreSecurity/impacket.git
-git clone https://github.com/trustedsec/spraywmi.git
-git clone https://github.com/CISOfy/lynis.git
-git clone https://github.com/Yelp/osxcollector.git
 git clone https://github.com/sensepost/BiLE-suite.git
 git clone https://github.com/pwnwiki/pwnwiki-tools.git
-git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/stasinopoulos/commix.git
-git clone https://github.com/pentestmonkey/unix-privesc-check.git
-git clone https://github.com/pentestmonkey/exploit-suggester.git
-git clone https://github.com/rebootuser/LinEnum.git
 git clone https://github.com/brav0hax/smbexec.git
 	echo "Select 1 - Debian/Ubuntu, Select all defaults"
 	cd ./smbexec && ./install.sh
@@ -275,6 +280,15 @@ git clone https://github.com/jseidl/Babadook.git
 # PostExploit
 mkdir -p $dir/post
 cd $dir/post
+git clone https://github.com/jbarcia/priv-escalation.git
+git clone https://github.com/CISOfy/lynis.git
+git clone https://github.com/foospidy/DbDat.git
+git clone https://github.com/Yelp/osxcollector.git
+git clone https://github.com/pentestmonkey/windows-privesc-check.git
+git clone https://github.com/pentestmonkey/unix-privesc-check.git
+git clone https://github.com/pentestmonkey/exploit-suggester.git
+git clone https://github.com/GDSSecurity/Windows-Exploit-Suggester.git
+git clone https://github.com/rebootuser/LinEnum.git
 git clone https://github.com/ShawnDEvans/smbmap.git
 git clone https://jbarcia@github.com/CroweCybersecurity/shareenum.git
 git clone https://github.com/byt3bl33d3r/CrackMapExec.git
@@ -282,6 +296,8 @@ git clone https://github.com/T-S-A/smbspider.git
 git clone https://github.com/mubix/post-exploitation.git
 git clone https://github.com/hfiref0x/UACME.git
 git clone https://github.com/pentestmonkey/pysecdump.git
+git clone https://github.com/trustedsec/spraywmi.git
+git clone https://github.com/lgandx/Responder-Windows.git
 cd ..
 apt-get -f install
 
@@ -291,6 +307,7 @@ cd $dir/wordlists
 git clone https://github.com/danielmiessler/SecLists.git
 git clone https://github.com/danielmiessler/RobotsDisallowed.git
 git clone https://github.com/pwnwiki/webappurls.git
+git clone https://github.com/fuzzdb-project/fuzzdb.git
 
 
 # Metasploit Modules
@@ -313,14 +330,14 @@ git clone https://github.com/dirtyfilthy/metassh.git
 mkdir -p $dir/THP
 cd $dir/THP
 git clone https://github.com/cheetz/Easy-P.git
-git clone https://github.com/cheetz/Password_Plus_One
-git clone https://github.com/cheetz/PowerShell_Popup
-git clone https://github.com/cheetz/icmpshock
-git clone https://github.com/cheetz/brutescrape
-git clone https://www.github.com/cheetz/reddit_xss
-git clone https://github.com/cheetz/PowerSploit
-git clone https://github.com/cheetz/PowerTools
-git clone https://github.com/cheetz/nishang
+git clone https://github.com/cheetz/Password_Plus_One.git
+git clone https://github.com/cheetz/PowerShell_Popup.git
+git clone https://github.com/cheetz/icmpshock.git
+git clone https://github.com/cheetz/brutescrape.git
+git clone https://www.github.com/cheetz/reddit_xss.git
+git clone https://github.com/cheetz/PowerSploit.git
+git clone https://github.com/cheetz/PowerTools.git
+git clone https://github.com/cheetz/nishang.git
 
 
 
@@ -346,6 +363,8 @@ git clone https://github.com/pwnwiki/kaliwiki.git
 git clone https://github.com/pwnwiki/dfirwiki.git
 git clone https://github.com/pwnwiki/exploitdevwiki.git
 git clone https://github.com/mubix/post-exploitation-wiki.git
+git clone https://github.com/drduh/OS-X-Security-and-Privacy-Guide.git
+git clone https://github.com/herrbischoff/awesome-osx-command-line.git
 
 
 # Physical Security
