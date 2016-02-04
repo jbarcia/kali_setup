@@ -23,7 +23,7 @@ git clone https://github.com/offensive-security/kali-linux-recipes.git
 git clone https://github.com/mubix/8021xbridge.git
 git clone https://github.com/Warpnet/BitM.git
 git clone https://github.com/pentestmonkey/yaptest.git
-git cone https://jbarcia@github.com/CroweCybersecurity/pen-random-scripts.git
+git clone https://jbarcia@github.com/CroweCybersecurity/pen-random-scripts.git
 git clone https://github.com/rofl0r/proxychains-ng.git
 
 # Crowe
@@ -107,7 +107,8 @@ git clone https://github.com/pentestmonkey/gateway-finder.git
 git clone https://github.com/jwalker/SIRT.git
 git clone https://jbarcia@github.com/CroweCybersecurity/go-sshscan.git
 git clone https://github.com/1N3/Sn1per.git
-
+git clone https://github.com/rapid7/ssh-badkeys.git
+git clone https://github.com/BenBE/kompromat.git
 
 # Passwords
 mkdir -p $dir/passwords
@@ -252,6 +253,7 @@ apt-get -f install
 mkdir -p $dir/powershell
 cd $dir/powershell
 git clone https://github.com/kfosaaen/Get-LAPSPasswords.git
+git clone https://github.com/PyroTek3/PowerShell-AD-Recon.git
 git clone https://github.com/Kevin-Robertson/Inveigh.git
 git clone https://github.com/samratashok/nishang.git
 git clone https://github.com/PowerShellEmpire/PowerTools.git
@@ -308,6 +310,7 @@ git clone https://github.com/danielmiessler/SecLists.git
 git clone https://github.com/danielmiessler/RobotsDisallowed.git
 git clone https://github.com/pwnwiki/webappurls.git
 git clone https://github.com/fuzzdb-project/fuzzdb.git
+cp /root/github/exploits/Sn1per/BruteX/wordlists/* $dir/wordlists
 
 
 # Metasploit Modules
