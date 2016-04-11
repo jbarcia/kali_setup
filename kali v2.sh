@@ -520,17 +520,19 @@ if [ $arm == 0 ]; then
   ./configure && make && make install
 fi
 # NTDS_EXTRACT
-mkdir ~/NTDS_EXTRACT
-cd ~/NTDS_EXTRACT
-cp /toolsv3/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
-cp /toolsv3/Assessment/_Post-Exploitation/VSS/ntdsxtract_v1_0.zip ~/NTDS_EXTRACT/
-cp /toolsv3/Assessment/_Post-Exploitation/VSS/dshashes.py ~/NTDS_EXTRACT/
-tar zxvf libesedb-alpha-20120102.tar.gz
-unzip ntdsxtract_v1_0.zip
-cp dshashes.py NTDSXtract\ 1.0/dshashes.py
-cd libesedb-20120102
-chmod +x configure
-./configure && make
+if [ ! -d "~/NTDS_EXTRACT" ]; then
+  mkdir ~/NTDS_EXTRACT
+  cd ~/NTDS_EXTRACT
+  cp /toolsv3/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
+  cp /toolsv3/Assessment/_Post-Exploitation/VSS/ntdsxtract_v1_0.zip ~/NTDS_EXTRACT/
+  cp /toolsv3/Assessment/_Post-Exploitation/VSS/dshashes.py ~/NTDS_EXTRACT/
+  tar zxvf libesedb-alpha-20120102.tar.gz
+  unzip ntdsxtract_v1_0.zip
+  cp dshashes.py NTDSXtract\ 1.0/dshashes.py
+  cd libesedb-20120102
+  chmod +x configure
+  ./configure && make
+fi
 
 ###### Loki Setup
 #apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
