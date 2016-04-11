@@ -133,18 +133,26 @@ gem install bundler
 
 
 ##### Install g0tmi1k/os-scripts
-git clone https://github.com/g0tmi1k/os-scripts.git
-chmod +x os-scripts/backtrack5r3.sh
-chmod +x os-scripts/kali-rolling.sh
-chmod +x os-scripts/kali1.sh
-chmod +x os-scripts/kali2.sh
+if [ -d "os-scripts" ]; then
+  cd os-scripts
+  git stash
+  git pull
+  cd ..
+elif [ ! -d "os-scripts" ]; then
+  git clone https://github.com/g0tmi1k/os-scripts.git
+fi
+
 if [ $vers == "rolling" ]; then
+  chmod +x os-scripts/kali-rolling.sh
   os-scripts/kali-rolling.sh
 elif [ $vers == "kali2" ]; then 
+  chmod +x os-scripts/kali2.sh
   os-scripts/kali2.sh
 elif [ $vers == "kali1" ]; then 
+  chmod +x os-scripts/kali1.sh
   os-scripts/kali1.sh
 elif [ $vers == "backtrack" ]; then 
+  chmod +x os-scripts/backtrack5r3.sh
   os-scripts/backtrack5r3.sh
 elif [ $vers == 0 ]; then 
   echo "Unable to determine Kali version, run os-script manually"
