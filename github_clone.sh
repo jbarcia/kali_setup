@@ -25,6 +25,7 @@ git clone https://github.com/Warpnet/BitM.git
 git clone https://github.com/pentestmonkey/yaptest.git
 git clone https://jbarcia@github.com/CroweCybersecurity/pen-random-scripts.git
 git clone https://github.com/rofl0r/proxychains-ng.git
+git clone https://github.com/HackerFantastic/Public.git
 
 # Crowe
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
@@ -44,6 +45,8 @@ git clone https://github.com/byt3bl33d3r/duckhunter.git
 mkdir -p $dir/recon
 cd $dir/recon
 git clone https://jbarcia@github.com/jbarcia/recon.git
+git clone https://github.com/kostrin/Pillage.git
+git clone https://github.com/jrozner/sonar.git
 git clone https://github.com/mubix/resolvequick.git
 # git clone https://github.com/jbarcia/User-Enumeration.git
 git clone https://github.com/smicallef/spiderfoot.git
@@ -188,6 +191,9 @@ git clone https://github.com/ptigas/simple-captcha-solver.git
 git clone https://github.com/1N3/Wordpress-XMLRPC-Brute-Force-Exploit.git
 git clone https://github.com/droope/droopescan.git
 git clone https://github.com/R3dy/parse-burp.git
+git clone https://github.com/AlisamTechnology/ATSCAN.git
+git clone https://github.com/joaomatosf/jexboss.git
+git clone https://github.com/foospidy/payloads.git
 
 # Shellcode
 mkdir -p $dir/shellcode
@@ -226,6 +232,7 @@ git clone https://github.com/m57/dnsteal.git
 git clone https://github.com/ytisf/PyExfil.git
 git clone https://github.com/radman404/DNSSUB.git
 git clone https://github.com/infodox/tsh-sctp.git
+git clone https://github.com/nccgroup/holepuncher.git
 
 # Exploits
 mkdir -p $dir/exploits
@@ -282,24 +289,41 @@ git clone https://github.com/jseidl/Babadook.git
 # PostExploit
 mkdir -p $dir/post
 cd $dir/post
-git clone https://github.com/jbarcia/priv-escalation.git
+mkdir -p $dir/post/linux/enum
+mkdir -p $dir/post/win/enum
+mkdir -p $dir/post/osx/enum
+mkdir -p $dir/post/solaris/enum
+mkdir -p $dir/post/databases
+mkdir -p $dir/post/smb
+#git clone https://github.com/jbarcia/priv-escalation.git
+cd  $dir/post/linux/enum
 git clone https://github.com/CISOfy/lynis.git
-git clone https://github.com/foospidy/DbDat.git
-git clone https://github.com/Yelp/osxcollector.git
-git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/pentestmonkey/unix-privesc-check.git
-git clone https://github.com/pentestmonkey/exploit-suggester.git
-git clone https://github.com/GDSSecurity/Windows-Exploit-Suggester.git
 git clone https://github.com/rebootuser/LinEnum.git
-git clone https://github.com/ShawnDEvans/smbmap.git
-git clone https://jbarcia@github.com/CroweCybersecurity/shareenum.git
-git clone https://github.com/byt3bl33d3r/CrackMapExec.git
-git clone https://github.com/T-S-A/smbspider.git
-git clone https://github.com/mubix/post-exploitation.git
+git clone https://github.com/raffaele-forte/climber.git
+cd $dir/post/osx/enum
+git clone https://github.com/Yelp/osxcollector.git
+cd $dir/post/win/enum
+git clone https://github.com/pentestmonkey/windows-privesc-check.git
+git clone https://github.com/GDSSecurity/Windows-Exploit-Suggester.git
+cd $dir/post/solaris/enum
+git clone https://github.com/pentestmonkey/exploit-suggester.git
+cd $dir/post/win
 git clone https://github.com/hfiref0x/UACME.git
 git clone https://github.com/pentestmonkey/pysecdump.git
 git clone https://github.com/trustedsec/spraywmi.git
 git clone https://github.com/lgandx/Responder-Windows.git
+git clone https://github.com/realalexandergeorgiev/tempracer.git
+wget https://github.com/realalexandergeorgiev/tempracer/releases/download/1/TempRacer.exe
+cd $dir/post/databases
+git clone https://github.com/foospidy/DbDat.git
+cd $dir/post/smb
+git clone https://github.com/ShawnDEvans/smbmap.git
+git clone https://jbarcia@github.com/CroweCybersecurity/shareenum.git
+git clone https://github.com/byt3bl33d3r/CrackMapExec.git
+git clone https://github.com/T-S-A/smbspider.git
+cd $dir/post
+git clone https://github.com/mubix/post-exploitation.git
 cd ..
 apt-get -f install
 
@@ -373,4 +397,5 @@ git clone https://github.com/herrbischoff/awesome-osx-command-line.git
 # Physical Security
 mkdir -p $dir/physical
 cd $dir/physical
-git clone https://jbarcia@github.com/CroweCybersecurity/ravenhid.git
+#git clone https://jbarcia@github.com/CroweCybersecurity/ravenhid.git
+git clone https://github.com/CroweCybersecurity/ravenhid.git
