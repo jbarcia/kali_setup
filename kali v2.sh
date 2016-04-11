@@ -239,6 +239,14 @@ chmod -f 0500 "${file}"
 rm -f /etc/network/if-pre-up.d/macchanger
 
 
+##### Configure bash - all users
+# custom bash search
+echo "## arrow up" >> ~/.inputrc
+echo "\"\\e[A\":history-search-backward" >> ~/.inputrc
+echo "## arrow down" >> ~/.inputrc
+echo "\"\\e[B\":history-search-forward" >> ~/.inputrc
+
+
 ##### Create screenshots dir and add to favs
 echo -e "\n ${GREEN}[+]${RESET} Configuring ${GREEN}file${RESET} (Nautilus/Thunar) ~ GUI file system navigation"
 mkdir -p /root/Desktop/Screenshots
@@ -461,6 +469,11 @@ elif [ $proc == 64 ]; then
 fi
 dpkg -i /tmp/shareenum.deb
 
+
+
+##### Install Github repos
+chmod +x github_clone.sh
+./github_clone.sh
 
 
 ################################ Install Work Specific Tools ################################
