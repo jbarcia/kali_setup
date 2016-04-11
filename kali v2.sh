@@ -138,15 +138,15 @@ chmod +x os-scripts/backtrack5r3.sh
 chmod +x os-scripts/kali-rolling.sh
 chmod +x os-scripts/kali1.sh
 chmod +x os-scripts/kali2.sh
-if [ vers == "rolling" ]; then
+if [ $vers == "rolling" ]; then
   os-scripts/kali-rolling.sh
-elif [ vers == "kali2" ]; then 
+elif [ $vers == "kali2" ]; then 
   os-scripts/kali2.sh
-elif [ vers == "kali1" ]; then 
+elif [ $vers == "kali1" ]; then 
   os-scripts/kali1.sh
-elif [ vers == "backtrack" ]; then 
+elif [ $vers == "backtrack" ]; then 
   os-scripts/backtrack5r3.sh
-elif [ vers == 0 ]; then 
+elif [ $vers == 0 ]; then 
   echo "Unable to determine Kali version, run os-script manually"
 fi
 
