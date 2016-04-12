@@ -534,8 +534,30 @@ fi
 #############################################################################################
 
 
+#### Setup Anonymous SMB
+smbpasswd -an nobody
+mkdir -p /mnt/smb
+
+sed -i 's/\[Global\]/\[Global\] \n guest account = nobody \n map to guest = bad user/I' smb.conf
+
+cat <<EOF >> /etc/samba/smb.conf
+
+[AnonShare]
+ comment = Guest access share
+ path = /mnt/smb
+ browseable = yes
+ writable = yes
+ read only = no
+ guest ok = yes
+
+EOF
+
+chmod -R a+rwx /mnt/smb
+service smbd restart
+service nmbd restart
 
 
+#### Desktop Network File
 cat <<EOF > /root/Desktop/Network.txt
 macchanger -l|grep -i Cisco
 macchanger -l|grep -i VMWare
