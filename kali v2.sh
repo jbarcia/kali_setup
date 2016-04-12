@@ -207,11 +207,6 @@ systemctl disable ntp 2>/dev/null
 start_time=$(date +%s)
 
 
-
-
-
-
-
 ###### Configure startup   ***
 #echo -e "\n ${GREEN}[+]${RESET} Configuring ${GREEN}startup${RESET} ~ randomize the hostname, eth0 & wlan0s MAC address"
 #--- Start up
@@ -261,112 +256,74 @@ mkdir -p /root/Desktop/Screenshots
 grep -q '^file:///root/Desktop/Screenshots ' "${file}" 2>/dev/null || echo 'file:///root/Desktop/Screenshots Screenshots' >> "${file}"
 
 
-
-
-
-
-
-
-
-
 ##### Setup firefox
-#--- Configure bookmarks
-#awk '!a[$0]++' /tmp/bookmarks_new.html | \egrep -v ">(Latest Headlines|Getting Started|Recently Bookmarked|Recent Tags|Mozilla Firefox|Help and Tutorials|Customize Firefox|Get Involved|About Us|Hacker Media|Bookmarks Toolbar|Most Visited)</" | \egrep -v "^    </DL><p>" | \egrep -v "^<DD>Add" > "${file}"
-#sed -i 's#^</DL><p>#        </DL><p>\n    </DL><p>\n</DL><p>#' "${file}"                                                          # Fix import issues from pentest-bookmarks...
-#sed -i 's#^    <DL><p>#    <DL><p>\n    <DT><A HREF="http://127.0.0.1/">localhost</A>#' "${file}"                                 # Add localhost to bookmark toolbar (before hackery folder)
-#sed -i 's#^</DL><p>#    <DT><A HREF="https://127.0.0.1:8834/">Nessus</A>\n</DL><p>#' "${file}"                                    # Add Nessus UI bookmark toolbar
-#[ "${openVAS}" != "false" ] && sed -i 's#^</DL><p>#    <DT><A HREF="https://127.0.0.1:9392/">OpenVAS</A>\n</DL><p>#' "${file}"      # Add OpenVAS UI to bookmark toolbar
-##sed -i 's#^</DL><p>#    <DT><A HREF="https://127.0.0.1:3780/">Nexpose</A>\n</DL><p>#' "${file}"                                  # Add Nexpose UI to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="http://127.0.0.1:3000/ui/panel">BeEF</A>\n</DL><p>#' "${file}"                               # Add BeEF UI to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="http://127.0.0.1/rips/">RIPS</A>\n</DL><p>#' "${file}"                                       # Add RIPs to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="https://paulschou.com/tools/xlate/">XLATE</A>\n</DL><p>#' "${file}"                          # Add XLATE to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="https://hackvertor.co.uk/public">HackVertor</A>\n</DL><p>#' "${file}"                        # Add HackVertor to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="http://www.irongeek.com/skiddypad.php">SkiddyPad</A>\n</DL><p>#' "${file}"                   # Add Skiddypad to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="https://www.exploit-db.com/search/">Exploit-DB</A>\n</DL><p>#' "${file}"                     # Add Exploit-DB to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="http://offset-db.com/">Offset-DB</A>\n</DL><p>#' "${file}"                                   # Add offset-db to bookmark toolbar
-##sed -i 's#^</DL><p>#    <DT><A HREF="http://shell-storm.org/shellcode/">Shelcodes</A>\n</DL><p>#' "${file}"                      # Add shellcode to bookmark toolbar
-##sed -i 's#^</DL><p>#    <DT><A HREF="http://ropshell.com/">ROP Shell</A>\n</DL><p>#' "${file}"                                   # Add ROP Shell to bookmark toolbar
-#sed -i 's#^</DL><p>#    <DT><A HREF="https://ifconfig.io/">ifconfig</A>\n</DL><p>#' "${file}"                                     # Add ifconfig.io to bookmark toolbar
-#sed -i 's#<HR>#<DT><H3 ADD_DATE="1303667175" LAST_MODIFIED="1303667175" PERSONAL_TOOLBAR_FOLDER="true">Bookmarks Toolbar</H3>\n<DD>Add bookmarks to this folder to see them displayed on the Bookmarks Toolbar#' "${file}"
-
 ##### Setup iceweasel's plugins
-#echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}iceweasel's plugins${RESET} ~ Useful addons"
+echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}Firefox plugins${RESET} ~ Useful addons"
 ##--- Download extensions
-#ffpath="$(find /root/.mozilla/firefox/*.default*/ -maxdepth 0 -mindepth 0 -type d -name '*.default*' -print -quit)/extensions"
-#[ "${ffpath}" == "/extensions" ] && echo -e ' '${RED}'[!]'${RESET}" Couldn't find Firefox/Iceweasel folder" 1>&2
-#mkdir -p "${ffpath}/"
-##curl --progress -k -L -f "https://github.com/mozmark/ringleader/blob/master/fx_pnh.xpi?raw=true"  || echo -e ' '${RED}'[!]'${RESET}" Issue downloading fx_pnh.xpi" 1>&2                                                                                                                        # plug-n-hack
-##curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/284030/addon-284030-latest.xpi?src=dp-btn-primary" -o "$ffpath/{6bdc61ae-7b80-44a3-9476-e1d121ec2238}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'HTTPS Finder'" 1>&2                             # HTTPS Finder
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/5817/addon-5817-latest.xpi?src=dp-btn-primary" -o "$ffpath/SQLiteManager@mrinalkant.blogspot.com.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'SQLite Manager'" 1>&2                                 # SQLite Manager
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/1865/addon-1865-latest.xpi?src=dp-btn-primary" -o "$ffpath/{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Adblock Plus'" 1>&2                                  # Adblock Plus
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/92079/addon-92079-latest.xpi?src=dp-btn-primary" -o "$ffpath/{bb6bc1bb-f824-4702-90cd-35e2fb24f25d}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Cookies Manager+'" 1>&2                            # Cookies Manager+
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/1843/addon-1843-latest.xpi?src=dp-btn-primary" -o "$ffpath/firebug@software.joehewitt.com.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Firebug'" 1>&2                                               # Firebug
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/15023/addon-15023-latest.xpi?src=dp-btn-primary" -o "$ffpath/foxyproxy-basic@eric.h.jung.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'FoxyProxy Basic'" 1>&2                                        # FoxyProxy Basic
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/429678/addon-429678-latest.xpi?src=dp-btn-primary" -o "$ffpath/useragentoverrider@qixinglu.com.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'User Agent Overrider'" 1>&2                             # User Agent Overrider
-#curl --progress -k -L -f "https://www.eff.org/files/https-everywhere-latest.xpi" -o "$ffpath/https-everywhere@eff.org.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'HTTPS Everywhere'" 1>&2                                                                                        # HTTPS Everywhere
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/3829/addon-3829-latest.xpi?src=dp-btn-primary" -o "$ffpath/{8f8fe09b-0bd3-4470-bc1b-8cad42b8203a}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Live HTTP Headers'" 1>&2                             # Live HTTP Headers
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/966/addon-966-latest.xpi?src=dp-btn-primary" -o "$ffpath/{9c51bd27-6ed8-4000-a2bf-36cb95c0c947}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Tamper Data'" 1>&2                                     # Tamper Data
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/557778/addon-557778-latest.xpi?src=api" -o "$ffpath/jid1-AWt6ex5aPvWtTg@jetpack.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Shodan Firefox Addon'" 1>&2     
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/file/293038/showip-2.7.7-sm+tb+fx.xpi?src=dp-btn-primary" -o "$ffpath/{3e9bb2a7-62ca-4efa-a4e6-f6f6168a652d}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'ShowIP'" 1>&2
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/10229/addon-10229-latest.xpi" -o "$ffpath/wappalyzer@crunchlabz.com.xpi"  || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Wappalyzer'" 1>&2
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/60/addon-60-latest.xpi?src=dp-btn-primary" -o "$ffpath/{c45c406e-ab73-11d8-be73-000a95be3b12}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Web Developer'" 1>&2
-#curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/300254/addon-300254-latest.xpi?src=dp-btn-primary" -o "$ffpath/check-compatibility@dactyl.googlecode.com.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Disable Add-on Compatibility Checks'" 1>&2    # Disable Add-on Compatibility Checks
-##--- Installing extensions
-#for FILE in $(find "${ffpath}" -maxdepth 1 -type f -name '*.xpi'); do
-#  d="$(basename "${FILE}" .xpi)"
-#  mkdir -p "${ffpath}/${d}/"
-#  unzip -q -o -d "${ffpath}/${d}/" "${FILE}"
-#  rm -f "${FILE}"
-#done
-##--- Enable Iceweasel's addons/plugins/extensions
-#timeout 15 iceweasel >/dev/null 2>&1   #iceweasel & sleep 15; killall -q -w iceweasel >/dev/null
-#sleep 3
-#file=$(find /root/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'extensions.sqlite' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
-#if [ ! -e "${file}" ] || [ -z "${file}" ]; then
-#  #echo -e ' '${RED}'[!]'${RESET}" Something went wrong enabling Iceweasel's extensions via method #1. Trying method #2..." 1>&2
-#  false
-#else
-#  echo -e " ${YELLOW}[i]${RESET} Enabled ${YELLOW}Iceweasel's extensions${RESET} (via method #1!)"
-#  apt-get install -y -qq sqlite3 || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
-#  rm -f /tmp/iceweasel.sql; touch /tmp/iceweasel.sql
-#  echo "UPDATE 'main'.'addon' SET 'active' = 1, 'userDisabled' = 0;" > /tmp/iceweasel.sql    # Force them all!
-#  sqlite3 "${file}" < /tmp/iceweasel.sql      #fuser extensions.sqlite
-#fi
-#file=$(find /root/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'extensions.json' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
-#if [ ! -e "${file}" ] || [ -z "${file}" ]; then
-#  #echo -e ' '${RED}'[!]'${RESET}" Something went wrong enabling Iceweasel's extensions via method #2. Did method #1 also fail?" 1>&2
-#  false
-#else
-#  echo -e " ${YELLOW}[i]${RESET} Enabled ${YELLOW}Iceweasel's extensions${RESET} (via method #2!)"
-#  sed -i 's/"active":false,/"active":true,/g' "${file}"                # Force them all!
-#  sed -i 's/"userDisabled":true,/"userDisabled":false,/g' "${file}"    # Force them all!
-#fi
-#file=$(find /root/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'prefs.js' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
-#[ ! -z "${file}" ] && sed -i '/extensions.installCache/d' "${file}"
-#timeout 5 iceweasel >/dev/null 2>&1   # For extensions that just work without restarting
-#sleep 3
-#timeout 5 iceweasel >/dev/null 2>&1   # ...for (most) extensions, as they need iceweasel to restart
-#sleep 3
+ffpath="$(find ~/.mozilla/firefox/*.default*/ -maxdepth 0 -mindepth 0 -type d -name '*.default*' -print -quit)/extensions"
+[ "${ffpath}" == "/extensions" ] \
+  && echo -e ' '${RED}'[!]'${RESET}" Couldn't find Firefox folder" 1>&2
+mkdir -p "${ffpath}/"
+curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/557778/addon-557778-latest.xpi?src=api" -o "$ffpath/jid1-AWt6ex5aPvWtTg@jetpack.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Shodan Firefox Addon'" 1>&2     
+curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/file/293038/showip-2.7.7-sm+tb+fx.xpi?src=dp-btn-primary" -o "$ffpath/{3e9bb2a7-62ca-4efa-a4e6-f6f6168a652d}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'ShowIP'" 1>&2
+curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/10229/addon-10229-latest.xpi" -o "$ffpath/wappalyzer@crunchlabz.com.xpi"  || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Wappalyzer'" 1>&2
+curl --progress -k -L -f "https://addons.mozilla.org/firefox/downloads/latest/60/addon-60-latest.xpi?src=dp-btn-primary" -o "$ffpath/{c45c406e-ab73-11d8-be73-000a95be3b12}.xpi" || echo -e ' '${RED}'[!]'${RESET}" Issue downloading 'Web Developer'" 1>&2
+
+#--- Installing extensions
+for FILE in $(find "${ffpath}" -maxdepth 1 -type f -name '*.xpi'); do
+  d="$(basename "${FILE}" .xpi)"
+  mkdir -p "${ffpath}/${d}/"
+  unzip -q -o -d "${ffpath}/${d}/" "${FILE}"
+  rm -f "${FILE}"
+done
+#--- Enable Firefox's addons/plugins/extensions
+timeout 15 firefox >/dev/null 2>&1
+timeout 5 killall -9 -q -w firefox-esr >/dev/null
+sleep 3s
+#--- Method #1 (Works on older versions)
+file=$(find ~/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'extensions.sqlite' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
+if [[ -e "${file}" ]] || [[ -n "${file}" ]]; then
+  echo -e " ${YELLOW}[i]${RESET} Enabled ${YELLOW}Firefox's extensions${RESET} (via method #1 - extensions.sqlite)"
+  apt -y -qq install sqlite3 \
+    || echo -e ' '${RED}'[!] Issue with apt install'${RESET} 1>&2
+  rm -f /tmp/firefox.sql
+  touch /tmp/firefox.sql
+  echo "UPDATE 'main'.'addon' SET 'active' = 1, 'userDisabled' = 0;" > /tmp/firefox.sql    # Force them all!
+  sqlite3 "${file}" < /tmp/firefox.sql      #fuser extensions.sqlite
+fi
+#--- Method #2 (Newer versions)
+file=$(find ~/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'extensions.json' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
+if [[ -e "${file}" ]] || [[ -n "${file}" ]]; then
+  echo -e " ${YELLOW}[i]${RESET} Enabled ${YELLOW}Firefox's extensions${RESET} (via method #2 - extensions.json)"
+  sed -i 's/"active":false,/"active":true,/g' "${file}"                # Force them all!
+  sed -i 's/"userDisabled":true,/"userDisabled":false,/g' "${file}"    # Force them all!
+fi
+#--- Remove cache
+file=$(find ~/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'prefs.js' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
+[ -n "${file}" ] \
+  && sed -i '/extensions.installCache/d' "${file}"
+#--- For extensions that just work without restarting
+timeout 15 firefox >/dev/null 2>&1
+timeout 5 killall -9 -q -w firefox-esr >/dev/null
+sleep 3s
+#--- For (most) extensions, as they need firefox to restart
+timeout 15 firefox >/dev/null 2>&1
+timeout 5 killall -9 -q -w firefox-esr >/dev/null
+sleep 5s
+#--- Wipe session (due to force close)
+find ~/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'sessionstore.*' -delete
 ##--- Configure foxyproxy
-#file=$(find /root/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'foxyproxy.xml' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
-#if [ -z "${file}" ]; then
-#  echo -e ' '${RED}'[!]'${RESET}' Something went wrong with the foxyproxy iceweasel extension (did any extensions install?). Skipping...' 1>&2
-#elif [ -e "${file}" ]; then
-#  grep -q 'localhost:8080' "${file}" 2>/dev/null || sed -i 's#<proxy name="Default"#<proxy name="localhost:8080" id="1145138293" notes="e.g. Burp, w3af" fromSubscription="false" enabled="true" mode="manual" selectedTabIndex="0" lastresort="false" animatedIcons="true" includeInCycle="false" color="\#07753E" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="true" disableCache="true" clearCookiesBeforeUse="false" rejectCookies="false"><matches/><autoconf url="" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><autoconf url="http://wpad/wpad.dat" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><manualconf host="127.0.0.1" port="8080" socksversion="5" isSocks="false" username="" password="" domain=""/></proxy><proxy name="Default"#' "${file}"          # localhost:8080
-#  grep -q 'localhost:8081' "${file}" 2>/dev/null || sed -i 's#<proxy name="Default"#<proxy name="localhost:8081 (socket5)" id="212586674" notes="e.g. SSH" fromSubscription="false" enabled="true" mode="manual" selectedTabIndex="0" lastresort="false" animatedIcons="true" includeInCycle="false" color="\#917504" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="true" disableCache="true" clearCookiesBeforeUse="false" rejectCookies="false"><matches/><autoconf url="" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><autoconf url="http://wpad/wpad.dat" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><manualconf host="127.0.0.1" port="8081" socksversion="5" isSocks="true" username="" password="" domain=""/></proxy><proxy name="Default"#' "${file}"         # localhost:8081 (socket5)
-#  grep -q '"No Caching"' "${file}" 2>/dev/null   || sed -i 's#<proxy name="Default"#<proxy name="No Caching" id="3884644610" notes="" fromSubscription="false" enabled="true" mode="system" selectedTabIndex="0" lastresort="false" animatedIcons="true" includeInCycle="false" color="\#990DA6" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="true" disableCache="true" clearCookiesBeforeUse="false" rejectCookies="false"><matches/><autoconf url="" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><autoconf url="http://wpad/wpad.dat" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><manualconf host="" port="" socksversion="5" isSocks="false" username="" password="" domain=""/></proxy><proxy name="Default"#' "${file}"                                          # No caching
-#else
-#  echo -ne '<?xml version="1.0" encoding="UTF-8"?>\n<foxyproxy mode="disabled" selectedTabIndex="0" toolbaricon="true" toolsMenu="true" contextMenu="true" advancedMenus="false" previousMode="disabled" resetIconColors="true" useStatusBarPrefix="true" excludePatternsFromCycling="false" excludeDisabledFromCycling="false" ignoreProxyScheme="false" apiDisabled="false" proxyForVersionCheck=""><random includeDirect="false" includeDisabled="false"/><statusbar icon="true" text="false" left="options" middle="cycle" right="contextmenu" width="0"/><toolbar left="options" middle="cycle" right="contextmenu"/><logg enabled="false" maxSize="500" noURLs="false" header="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;\n&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;\n&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;link rel=&quot;icon&quot; href=&quot;http://getfoxyproxy.org/favicon.ico&quot;/&gt;&lt;link rel=&quot;shortcut icon&quot; href=&quot;http://getfoxyproxy.org/favicon.ico&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;http://getfoxyproxy.org/styles/log.css&quot; type=&quot;text/css&quot;/&gt;&lt;/head&gt;&lt;body&gt;&lt;table class=&quot;log-table&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;td class=&quot;heading&quot;&gt;${timestamp-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${url-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${proxy-name-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${proxy-notes-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-name-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-case-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-type-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-color-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pac-result-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${error-msg-heading}&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tfoot&gt;&lt;tr&gt;&lt;td/&gt;&lt;/tr&gt;&lt;/tfoot&gt;&lt;tbody&gt;" row="&lt;tr&gt;&lt;td class=&quot;timestamp&quot;&gt;${timestamp}&lt;/td&gt;&lt;td class=&quot;url&quot;&gt;&lt;a href=&quot;${url}&quot;&gt;${url}&lt;/a&gt;&lt;/td&gt;&lt;td class=&quot;proxy-name&quot;&gt;${proxy-name}&lt;/td&gt;&lt;td class=&quot;proxy-notes&quot;&gt;${proxy-notes}&lt;/td&gt;&lt;td class=&quot;pattern-name&quot;&gt;${pattern-name}&lt;/td&gt;&lt;td class=&quot;pattern&quot;&gt;${pattern}&lt;/td&gt;&lt;td class=&quot;pattern-case&quot;&gt;${pattern-case}&lt;/td&gt;&lt;td class=&quot;pattern-type&quot;&gt;${pattern-type}&lt;/td&gt;&lt;td class=&quot;pattern-color&quot;&gt;${pattern-color}&lt;/td&gt;&lt;td class=&quot;pac-result&quot;&gt;${pac-result}&lt;/td&gt;&lt;td class=&quot;error-msg&quot;&gt;${error-msg}&lt;/td&gt;&lt;/tr&gt;" footer="&lt;/tbody&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;"/><warnings/><autoadd enabled="false" temp="false" reload="true" notify="true" notifyWhenCanceled="true" prompt="true"><match enabled="true" name="Dynamic AutoAdd Pattern" pattern="*://${3}${6}/*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false"/><match enabled="true" name="" pattern="*You are not authorized to view this page*" isRegEx="false" isBlackList="false" isMultiLine="true" caseSensitive="false" fromSubscription="false"/></autoadd><quickadd enabled="false" temp="false" reload="true" notify="true" notifyWhenCanceled="true" prompt="true"><match enabled="true" name="Dynamic QuickAdd Pattern" pattern="*://${3}${6}/*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false"/></quickadd><defaultPrefs origPrefetch="null"/><proxies>' > "${file}"
+#file=$(find ~/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'foxyproxy.xml' -print -quit)   #&& [ -e "${file}" ] && cp -n $file{,.bkup}
+#if [[ -z "${file}" ]]; then
+#  echo -e ' '${RED}'[!]'${RESET}' Something went wrong with the FoxyProxy firefox extension (did any extensions install?). Skipping...' 1>&2
+#else     # Create new
+#  echo -ne '<?xml version="1.0" encoding="UTF-8"?>\n<foxyproxy mode="disabled" selectedTabIndex="0" toolbaricon="true" toolsMenu="true" contextMenu="false" advancedMenus="false" previousMode="disabled" resetIconColors="true" useStatusBarPrefix="true" excludePatternsFromCycling="false" excludeDisabledFromCycling="false" ignoreProxyScheme="false" apiDisabled="false" proxyForVersionCheck=""><random includeDirect="false" includeDisabled="false"/><statusbar icon="true" text="false" left="options" middle="cycle" right="contextmenu" width="0"/><toolbar left="options" middle="cycle" right="contextmenu"/><logg enabled="false" maxSize="500" noURLs="false" header="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;\n&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;\n&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;link rel=&quot;icon&quot; href=&quot;http://getfoxyproxy.org/favicon.ico&quot;/&gt;&lt;link rel=&quot;shortcut icon&quot; href=&quot;http://getfoxyproxy.org/favicon.ico&quot;/&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;http://getfoxyproxy.org/styles/log.css&quot; type=&quot;text/css&quot;/&gt;&lt;/head&gt;&lt;body&gt;&lt;table class=&quot;log-table&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;td class=&quot;heading&quot;&gt;${timestamp-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${url-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${proxy-name-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${proxy-notes-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-name-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-case-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-type-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pattern-color-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${pac-result-heading}&lt;/td&gt;&lt;td class=&quot;heading&quot;&gt;${error-msg-heading}&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tfoot&gt;&lt;tr&gt;&lt;td/&gt;&lt;/tr&gt;&lt;/tfoot&gt;&lt;tbody&gt;" row="&lt;tr&gt;&lt;td class=&quot;timestamp&quot;&gt;${timestamp}&lt;/td&gt;&lt;td class=&quot;url&quot;&gt;&lt;a href=&quot;${url}&quot;&gt;${url}&lt;/a&gt;&lt;/td&gt;&lt;td class=&quot;proxy-name&quot;&gt;${proxy-name}&lt;/td&gt;&lt;td class=&quot;proxy-notes&quot;&gt;${proxy-notes}&lt;/td&gt;&lt;td class=&quot;pattern-name&quot;&gt;${pattern-name}&lt;/td&gt;&lt;td class=&quot;pattern&quot;&gt;${pattern}&lt;/td&gt;&lt;td class=&quot;pattern-case&quot;&gt;${pattern-case}&lt;/td&gt;&lt;td class=&quot;pattern-type&quot;&gt;${pattern-type}&lt;/td&gt;&lt;td class=&quot;pattern-color&quot;&gt;${pattern-color}&lt;/td&gt;&lt;td class=&quot;pac-result&quot;&gt;${pac-result}&lt;/td&gt;&lt;td class=&quot;error-msg&quot;&gt;${error-msg}&lt;/td&gt;&lt;/tr&gt;" footer="&lt;/tbody&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;"/><warnings/><autoadd enabled="false" temp="false" reload="true" notify="true" notifyWhenCanceled="true" prompt="true"><match enabled="true" name="Dynamic AutoAdd Pattern" pattern="*://${3}${6}/*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false"/><match enabled="true" name="" pattern="*You are not authorized to view this page*" isRegEx="false" isBlackList="false" isMultiLine="true" caseSensitive="false" fromSubscription="false"/></autoadd><quickadd enabled="false" temp="false" reload="true" notify="true" notifyWhenCanceled="true" prompt="true"><match enabled="true" name="Dynamic QuickAdd Pattern" pattern="*://${3}${6}/*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false"/></quickadd><defaultPrefs origPrefetch="null"/><proxies>' > "${file}"
 #  echo -ne '<proxy name="localhost:8080" id="1145138293" notes="e.g. Burp, w3af" fromSubscription="false" enabled="true" mode="manual" selectedTabIndex="0" lastresort="false" animatedIcons="true" includeInCycle="false" color="#07753E" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="true" disableCache="true" clearCookiesBeforeUse="false" rejectCookies="false"><matches/><autoconf url="" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><autoconf url="http://wpad/wpad.dat" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><manualconf host="127.0.0.1" port="8080" socksversion="5" isSocks="false" username="" password="" domain=""/></proxy>' >> "${file}"
 #  echo -ne '<proxy name="localhost:8081 (socket5)" id="212586674" notes="e.g. SSH" fromSubscription="false" enabled="true" mode="manual" selectedTabIndex="0" lastresort="false" animatedIcons="true" includeInCycle="false" color="#917504" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="true" disableCache="true" clearCookiesBeforeUse="false" rejectCookies="false"><matches/><autoconf url="" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><autoconf url="http://wpad/wpad.dat" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><manualconf host="127.0.0.1" port="8081" socksversion="5" isSocks="true" username="" password="" domain=""/></proxy>' >> "${file}"
 #  echo -ne '<proxy name="No Caching" id="3884644610" notes="" fromSubscription="false" enabled="true" mode="system" selectedTabIndex="0" lastresort="false" animatedIcons="true" includeInCycle="false" color="#990DA6" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="true" disableCache="true" clearCookiesBeforeUse="false" rejectCookies="false"><matches/><autoconf url="" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><autoconf url="http://wpad/wpad.dat" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><manualconf host="" port="" socksversion="5" isSocks="false" username="" password="" domain=""/></proxy>' >> "${file}"
 #  echo -ne '<proxy name="Default" id="3377581719" notes="" fromSubscription="false" enabled="true" mode="direct" selectedTabIndex="0" lastresort="true" animatedIcons="false" includeInCycle="true" color="#0055E5" proxyDNS="true" noInternalIPs="false" autoconfMode="pac" clearCacheBeforeUse="false" disableCache="false" clearCookiesBeforeUse="false" rejectCookies="false"><matches><match enabled="true" name="All" pattern="*" isRegEx="false" isBlackList="false" isMultiLine="false" caseSensitive="false" fromSubscription="false"/></matches><autoconf url="" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><autoconf url="http://wpad/wpad.dat" loadNotification="true" errorNotification="true" autoReload="false" reloadFreqMins="60" disableOnBadPAC="true"/><manualconf host="" port="" socksversion="5" isSocks="false" username="" password=""/></proxy>' >> "${file}"
 #  echo -e '</proxies></foxyproxy>' >> "${file}"
 #fi
-##--- Wipe session (due to force close)
-#find /root/.mozilla/firefox/*.default*/ -maxdepth 1 -type f -name 'sessionstore.*' -delete
-##--- Remove old temp files
-#rm -f /tmp/iceweasel.sql
 
 
 
@@ -602,6 +559,11 @@ EOF
 
 
 
-
+echo -e '\n'${YELLOW}''${BOLD}'Configure Shutter Screenshot directory'${RESET}'\n\a'
+echo -e '\n'${YELLOW}''${BOLD}'Configure PrntScrn Keyboard Shortcuts -> System-tools-->preferences-->System Setting--> Keyboard'${RESET}'\n\a'
+echo -e '\n'${BLUE}''${BOLD}'           --> shutter -f -C -e      Shutter Full Screen'${RESET}'\n\a'
+echo -e '\n'${BLUE}''${BOLD}'           --> shutter -a -C -e      Shutter Active Window'${RESET}'\n\a'
+echo -e '\n'${YELLOW}''${BOLD}'Disable Network Connections'${RESET}'\n\a'
+echo -e '\n'${BLUE}''${BOLD}'           --> Edit Connections --> General --> Auto Connect to this network'${RESET}'\n\a'
 echo -e '\n'${BLUE}'[*]'${RESET}' '${BOLD}'Done!'${RESET}'\n\a'
 exit 0
