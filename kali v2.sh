@@ -351,16 +351,17 @@ file=/root/.msf4/msfconsole.rc; [ -e "${file}" ] && cp -n $file{,.bkup}
 #alias dir/ls    del/rm  auto handler   https://github.com/rapid7/metasploit-framework/tree/master/plugins // https://github.com/rapid7/metasploit-framework/issues/5107
 cat <<EOF > "${file}"
 
-load auto_add_route
-load alias
-alias del rm
-alias handler use exploit/multi/handler
-load sounds
+#load auto_add_route
+#load alias
+#alias del rm
+#alias handler use exploit/multi/handler
+#load sounds
 setg TimestampOutput true
 setg VERBOSE true
 setg ExitOnSession false
 setg EnableStageEncoding true
 
+use exploit/multi/handler
 set PAYLOAD windows/meterpreter/reverse_https
 
 setg LHOST 0.0.0.0
