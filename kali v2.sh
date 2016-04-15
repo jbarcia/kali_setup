@@ -580,7 +580,7 @@ ifconfig <interface> up
 
 EOF
 
-
+updatedb
 
 echo -e '\n'${YELLOW}''${BOLD}'Configure Shutter Screenshot directory'${RESET}'\n\a'
 echo -e '\n'${YELLOW}''${BOLD}'Configure PrntScrn Keyboard Shortcuts -> System-tools-->preferences-->System Setting--> Keyboard'${RESET}'\n\a'

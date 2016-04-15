@@ -125,6 +125,7 @@ git clone https://github.com/HarmJ0y/ImpDump.git
 git clone https://github.com/SpiderLabs/oracle_pwd_tools.git
 git clone https://github.com/SpiderLabs/Responder.git
 git clone https://github.com/urbanesec/ZackAttack.git
+git clone https://github.com/lanjelot/patator.git
 
 # IPv6
 mkdir -p $dir/ipv6
@@ -260,6 +261,7 @@ apt-get -f install
 mkdir -p $dir/powershell
 cd $dir/powershell
 git clone https://github.com/kfosaaen/Get-LAPSPasswords.git
+git clone https://github.com/rvrsh3ll/Misc-Powershell-Scripts.git
 git clone https://github.com/PyroTek3/PowerShell-AD-Recon.git
 git clone https://github.com/Kevin-Robertson/Inveigh.git
 git clone https://github.com/samratashok/nishang.git
