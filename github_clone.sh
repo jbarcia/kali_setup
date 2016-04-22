@@ -195,6 +195,7 @@ git clone https://github.com/R3dy/parse-burp.git
 git clone https://github.com/AlisamTechnology/ATSCAN.git
 git clone https://github.com/joaomatosf/jexboss.git
 git clone https://github.com/foospidy/payloads.git
+git clone https://github.com/0xsauby/yasuo.git
 
 # Shellcode
 mkdir -p $dir/shellcode
@@ -261,6 +262,7 @@ apt-get -f install
 mkdir -p $dir/powershell
 cd $dir/powershell
 git clone https://github.com/kfosaaen/Get-LAPSPasswords.git
+git clone https://github.com/chango77747/AdEnumerator.git
 git clone https://github.com/rvrsh3ll/Misc-Powershell-Scripts.git
 git clone https://github.com/PyroTek3/PowerShell-AD-Recon.git
 git clone https://github.com/Kevin-Robertson/Inveigh.git
