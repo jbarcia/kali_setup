@@ -129,6 +129,7 @@ fi
 mkdir -p /mnt/share
 
 ##### Install Gem Bundler
+dpkg --configure -a
 gem install bundler
 
 
@@ -158,7 +159,7 @@ elif [ $vers == 0 ]; then
   echo "Unable to determine Kali version, run os-script manually"
 fi
 
-
+dpkg --configure -a
 
 ##### Location information
 keyboardApple=false         # Using a Apple/Macintosh keyboard? Change to anything other than 'false' to enable   [ --osx ]
@@ -192,6 +193,7 @@ dpkg-reconfigure -f noninteractive tzdata
 ##locale -a    # Check
 #--- Installing ntp
 apt-get -y -qq install ntp ntpdate || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+dpkg --configure -a
 #--- Configuring ntp
 #file=/etc/default/ntp; [ -e "${file}" ] && cp -n $file{,.bkup}
 #grep -q "interface=127.0.0.1" "${file}" || sed -i "s/NTPD_OPTS='/NTPD_OPTS='--interface=127.0.0.1 /" "${file}"
@@ -373,6 +375,113 @@ echo "spool /root/msf_console.`date +%m-%d-%Y_%H-%M-%S`.log" >> "${file}"
 
 
 
+##### Custom Conky config
+file=~/.conkyrc; [ -e "${file}" ] && cp -n $file{,.bkup}
+cat <<EOF > "${file}"
+--# Useful: http://forums.opensuse.org/english/get-technical-help-here/how-faq-forums/unreviewed-how-faq/464737-easy-configuring-conky-conkyconf.html
+conky.config = {
+    background = false,
+
+    font = 'monospace:size=8:weight=bold',
+    use_xft = true,
+
+    update_interval = 2.0,
+
+    own_window = true,
+    own_window_type = 'normal',
+    own_window_transparent = true,
+    own_window_class = 'conky-semi',
+    own_window_argb_visual = false,
+    own_window_colour = 'brown',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+    double_buffer = true,
+    maximum_width = 260,
+
+    draw_shades = true,
+    draw_outline = false,
+    draw_borders = false,
+
+    stippled_borders = 3,
+    border_inner_margin = 9,
+    border_width = 10,
+
+    default_color = 'grey',
+
+    alignment = 'bottom_right',
+    gap_x = 5,
+    gap_y = 0,
+
+    uppercase = false,
+    use_spacer = 'right',
+};
+
+conky.text = [[
+\${color dodgerblue3}SYSTEM \${hr 2}\$color
+#\${color white}\${time %A},\${time %e} \${time %B} \${time %G}\${alignr}\${time %H:%M:%S}
+\${color white}Host\$color: \$nodename  \${alignr}\${color white}Uptime\$color: \$uptime
+
+\${color dodgerblue3}CPU \${hr 2}\$color
+#\${font Arial:bold:size=8}\${execi 99999 grep "model name" -m1 /proc/cpuinfo | cut -d":" -f2 | cut -d" " -f2- | sed "s#Processor ##"}\$font\$color
+\${color white}MHz\$color: \${freq} \${alignr}\${color white}Load\$color: \${exec uptime | awk -F "load average: "  '{print \$2}'}
+\${color white}Tasks\$color: \$running_processes/\$processes \${alignr}\${color white}CPU0\$color: \${cpu cpu0}% \${color white}CPU1\$color: \${cpu cpu1}%
+#\${color #c0ff3e}\${acpitemp}C
+#\${execi 20 sensors |grep "Core0 Temp" | cut -d" " -f4}\$font\$color\${alignr}\${freq_g 2} \${execi 20 sensors |grep "Core1 Temp" | cut -d" " -f4}
+\${cpugraph cpu0 25,120 000000 white} \${alignr}\${cpugraph cpu1 25,120 000000 white}
+\${color white}\${cpubar cpu1 3,120} \${alignr}\${color white}\${cpubar cpu2 3,120}\$color
+
+\${color dodgerblue3}PROCESSES \${hr 2}\$color
+\${color white}NAME             PID     CPU     MEM
+\${color white}\${top name 1}\${top pid 1}  \${top cpu 1}  \${top mem 1}\$color
+\${top name 2}\${top pid 2}  \${top cpu 2}  \${top mem 2}
+\${top name 3}\${top pid 3}  \${top cpu 3}  \${top mem 3}
+\${top name 4}\${top pid 4}  \${top cpu 4}  \${top mem 4}
+\${top name 5}\${top pid 5}  \${top cpu 5}  \${top mem 5}
+
+\${color dodgerblue3}MEMORY & SWAP \${hr 2}\$color
+\${color white}RAM\$color  \$alignr\$memperc%  \${membar 6,170}\$color
+\${color white}Swap\$color  \$alignr\$swapperc%  \${swapbar 6,170}\$color
+
+\${color dodgerblue3}FILESYSTEM \${hr 2}\$color
+\${color white}root\$color \${fs_free_perc /}% free\${alignr}\${fs_free /}/ \${fs_size /}
+\${fs_bar 3 /}\$color
+#\${color white}home\$color \${fs_free_perc /home}% free\${alignr}\${fs_free /home}/ \${fs_size /home}
+#\${fs_bar 3 /home}\$color
+
+\${color dodgerblue3}LAN eth0 (\${addr eth0}) \${hr 2}\$color
+\${color white}Down\$color:  \${downspeed eth0} KB/s\${alignr}\${color white}Up\$color: \${upspeed eth0} KB/s
+\${color white}Downloaded\$color: \${totaldown eth0} \${alignr}\${color white}Uploaded\$color: \${totalup eth0}
+\${downspeedgraph eth0 25,120 000000 00ff00} \${alignr}\${upspeedgraph eth0 25,120 000000 ff0000}\$color
+
+\${color dodgerblue3}LAN eth1 (\${addr eth1}) \${hr 2}\$color
+\${color white}Down\$color:  \${downspeed eth1} KB/s\${alignr}\${color white}Up\$color: \${upspeed eth1} KB/s
+\${color white}Downloaded\$color: \${totaldown eth1} \${alignr}\${color white}Uploaded\$color: \${totalup eth1}
+\${downspeedgraph eth1 25,120 000000 00ff00} \${alignr}\${upspeedgraph eth1 25,120 000000 ff0000}\$color
+
+\${color dodgerblue3}LAN eth2 (\${addr eth2}) \${hr 2}\$color
+\${color white}Down\$color:  \${downspeed eth2} KB/s\${alignr}\${color white}Up\$color: \${upspeed eth2} KB/s
+\${color white}Downloaded\$color: \${totaldown eth2} \${alignr}\${color white}Uploaded\$color: \${totalup eth2}
+\${downspeedgraph eth2 25,120 000000 00ff00} \${alignr}\${upspeedgraph eth2 25,120 000000 ff0000}\$color
+
+\${color dodgerblue3}Wi-Fi (\${addr wlan0}) \${hr 2}\$color
+\${color white}Down\$color:  \${downspeed wlan0} KB/s\${alignr}\${color white}Up\$color: \${upspeed wlan0} KB/s
+\${color white}Downloaded\$color: \${totaldown wlan0} \${alignr}\${color white}Uploaded\$color: \${totalup wlan0}
+\${downspeedgraph wlan0 25,120 000000 00ff00} \${alignr}\${upspeedgraph wlan0 25,120 000000 ff0000}\$color
+
+\${color dodgerblue3}CONNECTIONS \${hr 2}\$color
+\${color white}Inbound: \$color\${tcp_portmon 1 32767 count}  \${alignc}\${color white}Outbound: \$color\${tcp_portmon 32768 61000 count}\${alignr}\${color white}Total: \$color\${tcp_portmon 1 65535 count}
+\${color white}Inbound \${alignr}Local Service/Port\$color
+\$color \${tcp_portmon 1 32767 rhost 0} \${alignr}\${tcp_portmon 1 32767 lservice 0}
+\$color \${tcp_portmon 1 32767 rhost 1} \${alignr}\${tcp_portmon 1 32767 lservice 1}
+\$color \${tcp_portmon 1 32767 rhost 2} \${alignr}\${tcp_portmon 1 32767 lservice 2}
+\${color white}Outbound \${alignr}Remote Service/Port\$color
+\$color \${tcp_portmon 32768 61000 rhost 0} \${alignr}\${tcp_portmon 32768 61000 rservice 0}
+\$color \${tcp_portmon 32768 61000 rhost 1} \${alignr}\${tcp_portmon 32768 61000 rservice 1}
+\$color \${tcp_portmon 32768 61000 rhost 2} \${alignr}\${tcp_portmon 32768 61000 rservice 2}
+]]
+EOF
+
+
 
 
 
@@ -381,6 +490,7 @@ echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}ssh libraries${RESET} & ${GRE
 #*** I know its messy...
 for FILE in libssh2-1 libssh2-1-dev libgnutls-dev libdumbnet1; do
   apt-get -y -qq install "${FILE}" 2>/dev/null
+  dpkg --configure -a
 done
 
 
@@ -389,9 +499,15 @@ done
 ##### Install recordmydesktop
 echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}RecordMyDesktop${RESET} ~ GUI video screen capture"
 apt-get -y -qq install recordmydesktop || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+dpkg --configure -a
 #--- Installing GUI front end
 apt-get -y -qq install gtk-recordmydesktop || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+dpkg --configure -a
 
+##### Install mitmf
+echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}mitmf${RESET} ~ Man-In-The-Middle Framework"
+apt-get -y -qq install mitmf || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+dpkg --configure -a
 
 ##### Configure Shutter
 # shutter -f -C -e      Shutter Full Screen
@@ -403,20 +519,23 @@ echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}random dependencies for scrip
 #*** I know its messy...
 for FILE in conntrack rwho x11-apps finger; do
   apt-get -y -qq install "${FILE}" 2>/dev/null
+  dpkg --configure -a
 done
  
 
 ##### Install python dependencies
 echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}python dependencies${RESET} ~ compiling libraries"
 #*** I know its messy...
-for FILE in python-libpcap python-elixir python-support python-ipy python-glade2; do
+for FILE in python-libpcap python-elixir python-support python-ipy python-glade2 python-dnspython python-geoip python-whois python-requests python-ssdeep python-ldap; do
   apt-get -y -qq install "${FILE}" 2>/dev/null
+  dpkg --configure -a
 done
 
 
 ##### Install Sublime Text
 # x86
 apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+dpkg --configure -a
 if [ $proc == 32 ]; then 
   curl --progress -k -L -f "wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_i386.deb" > /tmp/sublimetext.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading Sublime Text" 1>&2   #***!!! hardcoded version! Need to manually check for updates
 # x64
@@ -444,9 +563,8 @@ chmod +x github_clone.sh
 
 ################################ Install Work Specific Tools ################################
 ##### Install John the Ripper Community Enhanced Version
-apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
-apt-get -y -qq install libssl-dev || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
-apt-get -y -qq openssl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+apt-get -y -qq install curl libssl-dev openssl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+dpkg --configure -a
 if [ $arm == 0 ]; then 
   curl --progress -k -L -f "http://www.openwall.com/john/j/john-1.8.0-jumbo-1.tar.gz" > /tmp/john-1.8.0-jumbo-1.tar.gz || echo -e ' '${RED}'[!]'${RESET}" Issue downloading JTR Community" 1>&2   #***!!! hardcoded version! Need to manually check for updates
   cd /tmp
@@ -467,8 +585,9 @@ fi
 # Github download
 cd $gitdir
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
-ln -s /root/github/Crowe-Scripts/toolslinux /
-ln -s /root/github/Crowe-Scripts/toolsv3 /
+mkdir /toolslinux                                              
+ln -s /root/github/Crowe-Scripts/pen-tools/Linux/* /toolslinux/
+ln -s /root/github/Crowe-Scripts/pen-tools /
 # Crowe Medusa v2.2_rc2
 if [ $arm == 0 ]; then 
   cp /toolslinux/passwords/medusa/Crowe_Medusa-2.2_rc2.zip /tmp/

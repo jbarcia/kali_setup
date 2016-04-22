@@ -29,10 +29,6 @@ git clone https://github.com/HackerFantastic/Public.git
 
 # Crowe
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
-ln -s /root/github/Crowe-Scripts/toolslinux /
-ln -s /root/github/Crowe-Scripts/toolsv3 /
-ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/ /var/www/html/1
-ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/ /usr/share/mana-toolkit/www/portal/1
 
 # Ducky
 mkdir -p $dir/ducky
@@ -261,6 +257,8 @@ apt-get -f install
 # Powershell
 mkdir -p $dir/powershell
 cd $dir/powershell
+mkdir crowe
+ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/* $dir/powershell/crowe
 git clone https://github.com/kfosaaen/Get-LAPSPasswords.git
 git clone https://github.com/chango77747/AdEnumerator.git
 git clone https://github.com/rvrsh3ll/Misc-Powershell-Scripts.git
@@ -288,7 +286,9 @@ git clone https://github.com/secabstraction/WmiSploit.git
 git clone https://github.com/jseidl/Babadook.git
 	wget https://raw.github.com/obscuresec/random/master/StartListener.py
 	wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
-#ln -s /root/github/powershell /var/www
+#ln -s /root/github/powershell /var/www/1
+ln -s /root/github/powershell /var/www/html/1
+ln -s /root/github/powershell /usr/share/mana-toolkit/www/portal/1
 
 # PostExploit
 mkdir -p $dir/post
