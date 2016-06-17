@@ -517,10 +517,11 @@ dpkg --configure -a
 ##### Install random dependencies for scripts
 echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}random dependencies for scripts${RESET} ~ random stuff"
 #*** I know its messy...
-for FILE in conntrack rwho x11-apps finger; do
+for FILE in conntrack rwho x11-apps finger xsltproc; do
   apt-get -y -qq install "${FILE}" 2>/dev/null
   dpkg --configure -a
 done
+pip install xlrd --upgrade
  
 
 ##### Install python dependencies

@@ -26,6 +26,7 @@ git clone https://github.com/pentestmonkey/yaptest.git
 git clone https://jbarcia@github.com/CroweCybersecurity/pen-random-scripts.git
 git clone https://github.com/rofl0r/proxychains-ng.git
 git clone https://github.com/HackerFantastic/Public.git
+git clone https://github.com/subTee/ApplicationWhitelistBypassTechniques.git
 
 # Crowe
 git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
@@ -122,6 +123,8 @@ git clone https://github.com/SpiderLabs/oracle_pwd_tools.git
 git clone https://github.com/SpiderLabs/Responder.git
 git clone https://github.com/urbanesec/ZackAttack.git
 git clone https://github.com/lanjelot/patator.git
+git clone https://github.com/1N3/BruteX.git
+cp /root/github/passwords/Sn1per/BruteX/wordlists/* $dir/wordlists
 
 # IPv6
 mkdir -p $dir/ipv6
@@ -204,6 +207,8 @@ git clone https://github.com/Veil-Framework/Veil.git
 	cd ..
 git clone https://github.com/jbarcia/Web-Shells.git
 git clone https://github.com/tennc/webshell.git
+git clone https://github.com/g0tmi1k/exe2hex.git
+git clone https://github.com/subTee/SCTPersistence.git
 git clone https://github.com/pentestmonkey/perl-reverse-shell.git
 git clone https://github.com/g0tmi1k/mpc.git
 git clone https://github.com/pentestmonkey/php-reverse-shell.git
@@ -212,8 +217,6 @@ git clone https://github.com/inquisb/icmpsh.git
 git clone https://github.com/iagox86/dnscat2.git
 git clone https://github.com/epinna/weevely3.git
 git clone https://jbarcia@github.com/CroweCybersecurity/DNSEncode.git
-git clone https://github.com/Ben0xA/AwesomerShell.git
-git clone https://github.com/Ben0xA/nps.git
 git clone https://github.com/DhavalKapil/icmptunnel.git
 git clone https://github.com/n1nj4sec/pupy.git
 git clone https://github.com/secretsquirrel/the-backdoor-factory.git
@@ -236,6 +239,7 @@ git clone https://github.com/nccgroup/holepuncher.git
 mkdir -p $dir/exploits
 cd $dir/exploits
 git clone https://github.com/breenmachine/Potato.git
+git clone https://github.com/3gstudent/Javascript-Backdoor
 git clone https://github.com/bidord/pykek.git
 git clone https://github.com/CoreSecurity/impacket.git
 git clone https://github.com/sensepost/BiLE-suite.git
@@ -260,6 +264,10 @@ cd $dir/powershell
 mkdir crowe
 ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/* $dir/powershell/crowe
 git clone https://github.com/kfosaaen/Get-LAPSPasswords.git
+git clone https://github.com/breakersall/PowershellScripts.git
+git clone https://github.com/Ben0xA/nps.git
+git clone https://github.com/Cn33liz/p0wnedShell.git
+git clone https://github.com/fdiskyou/PowerOPS.git
 git clone https://github.com/chango77747/AdEnumerator.git
 git clone https://github.com/rvrsh3ll/Misc-Powershell-Scripts.git
 git clone https://github.com/PyroTek3/PowerShell-AD-Recon.git
@@ -310,6 +318,7 @@ git clone https://github.com/Yelp/osxcollector.git
 cd $dir/post/win/enum
 git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/GDSSecurity/Windows-Exploit-Suggester.git
+git clone https://github.com/enjoiz/Privesc.git
 cd $dir/post/solaris/enum
 git clone https://github.com/pentestmonkey/exploit-suggester.git
 cd $dir/post/win
@@ -338,7 +347,7 @@ git clone https://github.com/danielmiessler/SecLists.git
 git clone https://github.com/danielmiessler/RobotsDisallowed.git
 git clone https://github.com/pwnwiki/webappurls.git
 git clone https://github.com/fuzzdb-project/fuzzdb.git
-cp /root/github/exploits/Sn1per/BruteX/wordlists/* $dir/wordlists
+cp /root/github/passwords/Sn1per/BruteX/wordlists/* $dir/wordlists
 
 
 # Metasploit Modules
