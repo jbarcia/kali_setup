@@ -51,7 +51,7 @@ git clone https://github.com/FreedomCoder/esearchy_mirai.git
 git clone https://github.com/elceef/dnstwist.git
 git clone https://github.com/nccgroup/typofinder.git
 git clone https://github.com/secworld/Breach-Miner.git
-	cd Breach-Miner                                                                             (master✱) 
+	cd Breach-Miner
 	chmod +x requirements.sh
 	./requirements.sh
 cd ..
