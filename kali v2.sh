@@ -698,6 +698,13 @@ echo "nameserver <DNS_SERVER>" >> /etc/resolv.conf
 route add default gw <GATEWAY_Address>
 ifconfig <interface> up
 
+CONKY
+ps aux | grep conky
+kill -9 1092
+conky &
+
+WEB CONTENT
+/usr/share/mana-toolkit/www/portal/
 EOF
 
 updatedb

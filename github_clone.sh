@@ -49,8 +49,13 @@ git clone https://github.com/mubix/resolvequick.git
 git clone https://github.com/smicallef/spiderfoot.git
 git clone https://github.com/FreedomCoder/esearchy_mirai.git
 git clone https://github.com/elceef/dnstwist.git
-git clone https://jbarcia@github.com/CroweCybersecurity/ad-ldap-enum.git
 git clone https://github.com/nccgroup/typofinder.git
+git clone https://github.com/secworld/Breach-Miner.git
+	cd Breach-Miner                                                                             (master✱) 
+	chmod +x requirements.sh
+	./requirements.sh
+cd ..
+git clone https://github.com/michenriksen/hibp.git
 git clone https://github.com/WestpointLtd/tls_prober.git
 git clone https://github.com/leebaird/discover.git
 	cd discover/
@@ -319,6 +324,7 @@ cd $dir/post/win/enum
 git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/GDSSecurity/Windows-Exploit-Suggester.git
 git clone https://github.com/enjoiz/Privesc.git
+git clone https://jbarcia@github.com/CroweCybersecurity/ad-ldap-enum.git
 cd $dir/post/solaris/enum
 git clone https://github.com/pentestmonkey/exploit-suggester.git
 cd $dir/post/win
