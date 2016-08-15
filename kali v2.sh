@@ -527,10 +527,11 @@ pip install xlrd --upgrade
 ##### Install python dependencies
 echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}python dependencies${RESET} ~ compiling libraries"
 #*** I know its messy...
-for FILE in python-libpcap python-elixir python-support python-ipy python-glade2 python-dnspython python-geoip python-whois python-requests python-ssdeep python-ldap; do
+for FILE in python-libpcap python-elixir python-support python-ipy python-glade2 python-dnspython python-geoip python-whois python-requests python-ssdeep python-ldap python-setuptools python-pip; do
   apt-get -y -qq install "${FILE}" 2>/dev/null
   dpkg --configure -a
 done
+pip install github3.py
 
 
 ##### Install Sublime Text
@@ -676,6 +677,16 @@ chmod -R a+rwx /mnt/smb
 service smbd restart
 service nmbd restart
 
+#### Desktop Network File
+cat <<EOF > /etc/profile.d/screensaver_off.sh
+
+#!/bin/bash
+sleep 2; xset s off
+sleep 2; xset s noblank
+sleep 2; xset -dpms
+EOF
+
+chmod +x /etc/profile.d/screensaver_off.sh
 
 #### Desktop Network File
 cat <<EOF > /root/Desktop/Network.txt
@@ -715,5 +726,7 @@ echo -e '\n'${BLUE}''${BOLD}'           --> shutter -f -C -e      Shutter Full S
 echo -e '\n'${BLUE}''${BOLD}'           --> shutter -a -C -e      Shutter Active Window'${RESET}'\n\a'
 echo -e '\n'${YELLOW}''${BOLD}'Disable Network Connections'${RESET}'\n\a'
 echo -e '\n'${BLUE}''${BOLD}'           --> Edit Connections --> General --> Auto Connect to this network'${RESET}'\n\a'
+echo -e '\n'${YELLOW}''${BOLD}'Check NMAP Aliases'${RESET}'\n\a'
+echo -e '\n'${BLUE}''${BOLD}'           --> .bash_aliases'${RESET}'\n\a'.bash_aliases
 echo -e '\n'${BLUE}'[*]'${RESET}' '${BOLD}'Done!'${RESET}'\n\a'
 exit 0
