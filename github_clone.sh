@@ -284,6 +284,7 @@ git clone https://github.com/FuzzySecurity/PowerShell-Suite.git
 git clone https://github.com/Ben0xA/nps.git
 git clone https://github.com/NetSPI/PowerUpSQL.git
 git clone https://github.com/Cn33liz/p0wnedShell.git
+git clone https://github.com/PowerShellMafia/PowerSploit.git
 git clone https://github.com/fdiskyou/PowerOPS.git
 git clone https://github.com/chango77747/AdEnumerator.git
 git clone https://github.com/rvrsh3ll/Misc-Powershell-Scripts.git
