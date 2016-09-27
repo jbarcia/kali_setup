@@ -615,6 +615,26 @@ if [ ! -d "~/NTDS_EXTRACT" ]; then
   ./configure && make
 fi
 
+
+###### Android Hacking Tools
+apt-get -y -qq install python-protobuf || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+cd /tmp
+wget https://github.com/mwrlabs/drozer/releases/download/2.3.4/drozer_2.3.4.deb
+dpkg -i drozer_2.3.4.deb
+
+wget https://dl.google.com/dl/android/studio/ide-zips/2.2.0.12/android-studio-ide-145.3276617-linux.zip
+unzip android-studio-ide-145.3276617-linux.zip
+mv android-studio /usr/local/android-studio
+ln -s /usr/local/android-studio/bin/studio.sh /usr/bin/androidstudio
+
+wget https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+tar -xvzf android-sdk_r24.4.1-linux.tgz
+mv android-sdk-linux /usr/local/android-sdk-linux
+ln -s /usr/local/android-sdk-linux/tools/android /usr/bin/android
+android update sdk -u -a -t 1,2
+
+ln -s /usr/local/android-sdk-linux/platform-tools/adb /usr/bin/adb
+
 ###### Loki Setup
 #apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
 #if [ $arm == 0 ]; then 
