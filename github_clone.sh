@@ -165,8 +165,10 @@ apt-get -f install
 
 # mobile
 mkdir -p $dir/mobile
-cd $dir/mobile
+mkdir -p $dir/mobile/Android
+cd $dir/mobile/Android
 git clone https://github.com/iSECPartners/Android-SSL-TrustKiller.git
+git clone https://github.com/mwrlabs/drozer.git
 
 
 # Wifi
@@ -278,6 +280,9 @@ cd $dir/powershell
 mkdir crowe
 ln -s /root/github/Crowe-Scripts/WindowsPowerShell/Modules/* $dir/powershell/crowe
 git clone https://github.com/kfosaaen/Get-LAPSPasswords.git
+git clone https://github.com/Kevin-Robertson/Tater.git
+git clone https://github.com/putterpanda/mimikittenz.git
+git clone https://github.com/lgandx/Responder-Windows.git
 git clone https://github.com/nettitude/PoshC2.git
 git clone https://github.com/breakersall/PowershellScripts.git
 git clone https://github.com/FuzzySecurity/PowerShell-Suite.git

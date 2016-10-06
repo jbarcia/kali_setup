@@ -631,9 +631,28 @@ wget https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
 tar -xvzf android-sdk_r24.4.1-linux.tgz
 mv android-sdk-linux /usr/local/android-sdk-linux
 ln -s /usr/local/android-sdk-linux/tools/android /usr/bin/android
-android update sdk -u -a -t 1,2
-
+# android list sdk --all
+android update sdk -u -a -t 1,2,3
 ln -s /usr/local/android-sdk-linux/platform-tools/adb /usr/bin/adb
+ln -s /usr/local/android-sdk-linux/build-tools/24.0.2/aapt /usr/bin/aapt
+ln -s /usr/local/android-sdk-linux/build-tools/24.0.2/dexdump /usr/bin/dexdump
+
+wget https://github.com/skylot/jadx/releases/download/v0.6.0/jadx-0.6.0.zip
+unzip jadx-0.6.0.zip -d jadx
+mv jadx /usr/local/jadx
+ln -s /usr/local/jadx/bin/jadx /usr/bin/jadx
+ln -s /usr/local/jadx/bin/jadx-gui /usr/bin/jadx-gui
+
+mkdir ~/AndroidTools
+cd ~/AndroidTools
+wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/android4me/AXMLPrinter2.jar
+wget https://bitbucket.org/JesusFreke/smali/downloads/smali-2.1.3.jar
+wget https://bitbucket.org/JesusFreke/smali/downloads/baksmali-2.1.3.jar
+# wget http://downloads.sourceforge.net/project/dex2jar/dex2jar-2.0.zip
+# unzip dex2jar-2.0.zip
+wget https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1.4.0.jar
+
+
 
 ###### Loki Setup
 #apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
