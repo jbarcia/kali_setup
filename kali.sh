@@ -795,6 +795,9 @@ WEB CONTENT
 
 GITHUB
 git clone 'http://.git'
+git clone 'git@github.com:<Username>/<Project>.git'
+--------------------------------
+git remote set-url origin git@github.com:<Username>/<Project>.git
 --------------------------------
 git commit -a -m 'COMMENT'
 git push
