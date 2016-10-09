@@ -685,7 +685,20 @@ sudo service docker restart
 
 # set Docker to auto-launch on startup
 sudo systemctl enable docker
-####################
+
+
+cat > /usr/bin/docker-pid <<'EOF'
+#!/bin/sh
+exec docker inspect --format '{{ .State.Pid }}' "$@"
+EOF
+chmod +x /usr/bin/docker-pid
+
+cat > /usr/bin/docker-ip <<'EOF'
+#!/bin/sh
+exec docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+EOF
+chmod +x /usr/bin/docker-ip
+#############################################################################################
 
 
 
@@ -766,17 +779,16 @@ chmod +x /etc/profile.d/screensaver_off.sh
 
 #### Desktop Network File
 cat <<EOF > /root/Desktop/Network.txt
+----------------------------------------------------------------------------
 macchanger -l|grep -i Cisco
 macchanger -l|grep -i VMWare
-
-
+----------------------------------------------------------------------------
 DHCP
 ifconfig <interface> down
 macchanger --mac=XX:XX:XX:XX:XX:XX <interface>
 ifconfig <interface> up
 dhclient <interface>
-
-
+----------------------------------------------------------------------------
 STATIC
 ifconfig <interface> down
 macchanger --mac=XX:XX:XX:XX:XX:XX <interface>
@@ -784,29 +796,42 @@ ifconfig <interface> <IP_Address> netmask 255.255.255.0 broadcast <IP_Address>.2
 echo "nameserver <DNS_SERVER>" >> /etc/resolv.conf
 route add default gw <GATEWAY_Address>
 ifconfig <interface> up
-
+----------------------------------------------------------------------------
 CONKY
 ps aux | grep conky
 kill -9 1092
 conky &
-
+----------------------------------------------------------------------------
 WEB CONTENT
 /usr/share/mana-toolkit/www/portal/
-
+----------------------------------------------------------------------------
 GITHUB
 git clone 'http://.git'
 git clone 'git@github.com:<Username>/<Project>.git'
---------------------------------
+
 git remote set-url origin git@github.com:<Username>/<Project>.git
---------------------------------
+
 git commit -a -m 'COMMENT'
 git push
---------------------------------
+
 git pull
---------------------------------
+
 git stash
 git reset --hard HEAD
---------------------------------
+----------------------------------------------------------------------------
+DOCKER
+docker run -d --name <NAME> -p <IP ADDRESS>:80:80
+docker stop <DOCKER CONTAINER>
+docker restart <DOCKER CONTAINER>
+docker rm <DOCKER CONTAINER>
+
+docker-pid <DOCKER CONTAINER>
+docker-ip <DOCKER CONTAINER>
+
+MATTERMOST CHAT
+docker run --name mattermost -d --restart=always --publish <IP ADDRESS>:8065:8065 mattermost/mattermost-preview
+http://localhost:8065/
+----------------------------------------------------------------------------
 EOF
 
 updatedb
