@@ -1,6 +1,6 @@
 #!/bin/bash
 #-Metadata----------------------------------------------------#
-#  Filename: kali.sh                     (Update: 2015-08-26) #
+#  Filename: kali.sh                     (Update: 2016-10-08) #
 #-Info--------------------------------------------------------#
 #  Personal post-install script for Kali Linux 2.0.           #
 #-Author(s)---------------------------------------------------#
@@ -145,16 +145,16 @@ fi
 
 if [ $vers == "rolling" ]; then
   chmod +x os-scripts/kali-rolling.sh
-  os-scripts/kali-rolling.sh
+  bash os-scripts/kali-rolling.sh
 elif [ $vers == "kali2" ]; then 
   chmod +x os-scripts/kali2.sh
-  os-scripts/kali2.sh
+  bash os-scripts/kali2.sh
 elif [ $vers == "kali1" ]; then 
   chmod +x os-scripts/kali1.sh
-  os-scripts/kali1.sh
+  bash os-scripts/kali1.sh
 elif [ $vers == "backtrack" ]; then 
   chmod +x os-scripts/backtrack5r3.sh
-  os-scripts/backtrack5r3.sh
+  bash os-scripts/backtrack5r3.sh
 elif [ $vers == 0 ]; then 
   echo "Unable to determine Kali version, run os-script manually"
 fi
@@ -654,6 +654,41 @@ wget https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1
 
 
 
+###### Docker Setup
+# update apt-get
+export DEBIAN_FRONTEND="noninteractive"
+sudo apt-get update
+
+# remove previously installed Docker
+sudo apt-get purge lxc-docker*
+sudo apt-get purge docker.io*
+
+# add Docker repo
+sudo apt-get install -y apt-transport-https ca-certificates
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+cat > /etc/apt/sources.list.d/docker.list <<'EOF'
+deb https://apt.dockerproject.org/repo debian-stretch main
+EOF
+sudo apt-get update
+
+# install Docker
+sudo apt-get install -y docker-engine
+sudo service docker start
+#sudo docker run hello-world
+
+
+# configure Docker user group permissions
+sudo groupadd docker
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
+
+# set Docker to auto-launch on startup
+sudo systemctl enable docker
+####################
+
+
+
 ###### Loki Setup
 #apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
 #if [ $arm == 0 ]; then 
@@ -757,6 +792,18 @@ conky &
 
 WEB CONTENT
 /usr/share/mana-toolkit/www/portal/
+
+GITHUB
+git clone 'http://.git'
+--------------------------------
+git commit -a -m 'COMMENT'
+git push
+--------------------------------
+git pull
+--------------------------------
+git stash
+git reset --hard HEAD
+--------------------------------
 EOF
 
 updatedb
