@@ -169,6 +169,11 @@ mkdir -p $dir/mobile/Android
 cd $dir/mobile/Android
 git clone https://github.com/iSECPartners/Android-SSL-TrustKiller.git
 git clone https://github.com/mwrlabs/drozer.git
+cd drozer
+python setup.py build
+python setup.py install
+cd ..
+git clone https://github.com/mwrlabs/drozer-modules.git
 
 
 # Wifi
