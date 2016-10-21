@@ -155,7 +155,8 @@ git clone https://github.com/hatRiot/zarp.git
 git clone https://github.com/citronneur/rdpy.git
 git clone https://github.com/ElevenPaths/EvilFOCA.git
 git clone https://github.com/infobyte/evilgrade.git
-git clone https://github.com/evilsocket/bettercap
+git clone https://github.com/evilsocket/bettercap-proxy-modules.git
+git clone https://github.com/evilsocket/bettercap.git
 	cd bettercap
 	gem build bettercap.gemspec
 	sudo gem install bettercap*.gem
