@@ -238,9 +238,9 @@ git clone https://github.com/inquisb/icmpsh.git
 git clone https://github.com/Maksadbek/tcpovericmp.git
 git clone https://github.com/iagox86/dnscat2.git
 git clone https://github.com/epinna/weevely3.git
-git clone https://jbarcia@github.com/CroweCybersecurity/DNSEncode.git
 git clone https://github.com/DhavalKapil/icmptunnel.git
 git clone https://github.com/n1nj4sec/pupy.git
+ln -s /root/github/Crowe-Scripts/DNSEncode $dir/shellcode/
 git clone https://github.com/secretsquirrel/the-backdoor-factory.git
 	cd the-backdoor-factory
 	./install.sh
@@ -311,7 +311,6 @@ git clone https://github.com/besimorhino/powercat.git
 git clone https://github.com/mattifestation/PowerSploit.git
 git clone https://github.com/NetSPI/PS_MultiCrack.git
 git clone https://github.com/NetSPI/Powershell-Modules.git
-git clone https://jbarcia@github.com/CroweCybersecurity/pen-powerpen.git
 git clone https://github.com/NetSPI/PowerShell.git
 git clone https://github.com/psget/psget.git
 git clone https://github.com/NytroRST/NetRipper.git
@@ -324,6 +323,7 @@ git clone https://github.com/jseidl/Babadook.git
 	wget https://raw.github.com/obscuresec/random/master/StartListener.py
 	wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py
 #ln -s /root/github/powershell /var/www/1
+ln -s /root/github/Crowe-Scripts/pen-powerpen $dir/powershell/
 ln -s /root/github/powershell /var/www/html/1
 ln -s /root/github/powershell /usr/share/mana-toolkit/www/portal/1
 
@@ -388,8 +388,9 @@ mkdir -p $dir/metasploit
 cd $dir/metasploit
 git clone https://github.com/pwnwiki/q.git
 git clone https://github.com/khr0x40sh/metasploit-modules.git
-git clone https://jbarcia@github.com/CroweCybersecurity/pen-metasploit.git
-ln -s /root/github/Crowe-Scripts/metasploit_modules $dir/metasploit
+
+ln -s /root/github/Crowe-Scripts/metasploit_modules $dir/metasploit/
+ln -s /root/github/Crowe-Scripts/pen-metasploit $dir/metasploit/
 ln -s $dir/powershell/NetRipper/Metasploit/ $dir/metasploit/NetRipper/
 
 # Meterpreter Shells
