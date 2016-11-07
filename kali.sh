@@ -159,6 +159,7 @@ elif [ $vers == 0 ]; then
   echo "Unable to determine Kali version, run os-script manually"
 fi
 
+rm /etc/network/interfaces.d/eth1.cfg
 dpkg --configure -a
 
 ##### Location information
