@@ -829,8 +829,15 @@ docker-pid <DOCKER CONTAINER>
 docker-ip <DOCKER CONTAINER>
 
 MATTERMOST CHAT
+docker pull mattermost/mattermost-preview
 docker run --name mattermost -d --restart=always --publish <IP ADDRESS>:8065:8065 mattermost/mattermost-preview
 http://localhost:8065/
+
+
+Bloodhound
+docker pull neo4j
+docker run --name neo4j -d --restart=always -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 neo4j
+
 ----------------------------------------------------------------------------
 EOF
 
