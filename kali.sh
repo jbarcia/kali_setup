@@ -110,9 +110,9 @@ else
 fi
 
 ##### Initial Setup
-#echo "Is this an initial setup? (Y/N)"
-#read -p ""
-# if [ "$REPLY" == "y" -o "$REPLY" == "Y" ]; then
+read -r -p "Is this an initial setup? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
   # Change Hostname
   # SEP0023EB54B953
   hostname "SEP0023EB54B953"
@@ -122,7 +122,7 @@ fi
   mv /tmp/newhostname /etc/hostname
   # Change Password
   passwd
-#fi
+fi
 
 
 ##### Make share directory
@@ -160,6 +160,7 @@ elif [ $vers == 0 ]; then
 fi
 
 rm /etc/network/interfaces.d/eth1.cfg
+rm -rf os-scripts
 dpkg --configure -a
 
 ##### Location information
@@ -523,7 +524,10 @@ for FILE in conntrack rwho x11-apps finger xsltproc; do
   dpkg --configure -a
 done
 pip install xlrd --upgrade
- 
+pip install --upgrade google-api-python-client
+pip install shodan
+pip install -U pytz python-qt flickrapi python-instagram yapsy tweepy google-api-python-client python-dateutil configobj dominate
+
 
 ##### Install python dependencies
 echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}python dependencies${RESET} ~ compiling libraries"

@@ -4,13 +4,16 @@
 dir=/root/github
 apt-get -f install
 
-###############  EMPIRE INSTALL  ####################
-cd /root/
-git clone https://github.com/PowerShellEmpire/Empire.git
+read -r -p "Do you want to install Empire? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    cd /root/
+    git clone https://github.com/PowerShellEmpire/Empire.git
 	cd Empire
 	cd setup
 	./install.sh
 #####################################################
+fi
 
 mkdir -p $dir
 cd $dir
@@ -62,17 +65,28 @@ cd ..
 git clone https://github.com/michenriksen/hibp.git
 git clone https://github.com/WestpointLtd/tls_prober.git
 git clone https://github.com/leebaird/discover.git
-	cd discover/
-	./setup.sh
+
+read -r -p "Do you want to configure Discover? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
 	ln -s /root/github/recon/discover /opt/
+    cd discover/
+	./setup.sh
 	cd ..
+fi
+
 git clone https://bitbucket.org/LaNMaSteR53/peepingtom.git
+read -r -p "Do you want to configure Peepingtom? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
 	cd ./peepingtom/
 	wget https://gist.github.com/nopslider/5984316/raw/423b02c53d225fe8dfb4e2df9a20bc800cc7
 	wget https://phantomjs.googlecode.com/files/phantomjs1.9.2-linux-i686.tar.bz2
 	tar xvjf phantomjs-1.9.2-linux-i686.tar.bz2
 	cp ./phantomjs-1.9.2-linux-i686/bin/phantomjs
 	cd ..
+fi
+
 pip install selenium
 git clone https://github.com/breenmachine/httpscreenshot.git
 	cd ./httpscreenshot
@@ -84,10 +98,37 @@ git clone https://github.com/robertdavidgraham/masscan.git
 	make install
 	cd ..
 git clone https://github.com/michenriksen/gitrob.git
-	cd ./gitrob/bin
+
+read -r -p "Do you want to configure Gitrob? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+	cd ./gitrob
+
+	gem update --system
+	apt-get install libpq-dev 
+	/etc/init.d/postgresql start
+
+	sudo su postgres
+	createuser -s gitrob --pwprompt
+	createdb -O gitrob gitrob
+
+	gem uninstall github_api
+	gem install github_api -v 0.13
 	gem install gitrob
-	cd .. && cd ..
+
+	gitrob configure
+
+    cd ..
+fi
+
 git clone https://github.com/ChrisTruncer/EyeWitness.git
+read -r -p "Do you want to configure Eyewitness? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+	cd ./EyeWitness/setup
+	./setup.sh
+fi
+
 git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git
 git clone https://github.com/secforce/sparta.git
 mkdir ./spiderfoot/ && cd ./spiderfoot
@@ -170,10 +211,14 @@ mkdir -p $dir/mobile/Android
 cd $dir/mobile/Android
 git clone https://github.com/iSECPartners/Android-SSL-TrustKiller.git
 git clone https://github.com/mwrlabs/drozer.git
-cd drozer
-python setup.py build
-python setup.py install
-cd ..
+read -r -p "Do you want to install Drozer? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+	cd drozer
+	python setup.py build
+	python setup.py install
+	cd ..
+fi
 git clone https://github.com/mwrlabs/drozer-modules.git
 
 
@@ -222,10 +267,15 @@ cd $dir/shellcode
 git clone https://github.com/addenial/ps1encode.git
 git clone https://github.com/adaptivethreat/EmPyre.git
 git clone https://github.com/Veil-Framework/Veil.git
+read -r -p "Do you want to configure Veil? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
 	cd Veil
 	./Install.sh -c
 	python update.py
 	cd ..
+fi
+
 git clone https://github.com/jbarcia/Web-Shells.git
 git clone https://github.com/tennc/webshell.git
 git clone https://github.com/g0tmi1k/exe2hex.git
@@ -242,9 +292,14 @@ git clone https://github.com/DhavalKapil/icmptunnel.git
 git clone https://github.com/n1nj4sec/pupy.git
 ln -s /root/github/Crowe-Scripts/DNSEncode $dir/shellcode/
 git clone https://github.com/secretsquirrel/the-backdoor-factory.git
+read -r -p "Do you want to install TBF? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
 	cd the-backdoor-factory
 	./install.sh
 	cd ..
+fi
+
 apt-get -f install
 
 # Exfiltration
@@ -268,11 +323,16 @@ git clone https://github.com/sensepost/BiLE-suite.git
 git clone https://github.com/pwnwiki/pwnwiki-tools.git
 git clone https://github.com/stasinopoulos/commix.git
 git clone https://github.com/brav0hax/smbexec.git
+read -r -p "Do you want to configure SMBexec? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
 	echo "Select 1 - Debian/Ubuntu, Select all defaults"
 	cd ./smbexec && ./install.sh
 #	echo "Select 4 to compile smbexec binaries, select 5 to exit"
 #	./install.sh
 	cd ..	
+fi
+
 wget http://www.ampliasecurity.com/research/wce_v1_41beta_universal.zip
 	unzip -d ./wce wce_v1_41beta_universal.zip
 wget http://blog.gentilkiwi.com/downloads/mimikatz_trunk.zip
