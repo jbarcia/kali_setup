@@ -838,7 +838,16 @@ http://localhost:8065/
 Bloodhound
 docker pull neo4j
 docker run --name neo4j -d --restart=always -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 neo4j
+~/BloodHound-linux-x64/BloodHound
 
+
+MWR AD Control Mapping
+cd /root/ad-control-mapping-master
+docker-compose build
+docker-compose up -d
+docker-compose exec app rake db:create db:migrate assets:precompile
+docker run adcontrolmappingmaster_app
+http://127.0.0.1:3000
 ----------------------------------------------------------------------------
 EOF
 
