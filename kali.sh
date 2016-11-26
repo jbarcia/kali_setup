@@ -564,9 +564,12 @@ dpkg -i /tmp/shareenum.deb
 
 
 ##### Install Github repos
-chmod +x github_clone.sh
-./github_clone.sh
-
+read -r -p "Install Github repos? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    chmod +x github_clone.sh
+    ./github_clone.sh
+fi
 
 ################################ Install Work Specific Tools ################################
 ##### Install John the Ripper Community Enhanced Version
