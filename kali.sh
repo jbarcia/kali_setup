@@ -544,10 +544,10 @@ pip install github3.py
 apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
 dpkg --configure -a
 if [ $proc == 32 ]; then 
-  curl --progress -k -L -f "wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_i386.deb" > /tmp/sublimetext.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading Sublime Text" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+  curl --progress -k -L -f "https://download.sublimetext.com/sublime-text_build-3126_i386.deb" > /tmp/sublimetext.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading Sublime Text" 1>&2   #***!!! hardcoded version! Need to manually check for updates
 # x64
 elif [ $proc == 64 ]; then
-  curl --progress -k -L -f "http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb" > /tmp/sublimetext.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading Sublime Text" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+  curl --progress -k -L -f "https://download.sublimetext.com/sublime-text_build-3126_amd64.deb" > /tmp/sublimetext.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading Sublime Text" 1>&2   #***!!! hardcoded version! Need to manually check for updates
 fi
 dpkg -i /tmp/sublimetext.deb
 
@@ -595,32 +595,36 @@ dpkg --configure -a
 
 ##### Install Work Specific Scripts
 # Github download
-cd $gitdir
-git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
-mkdir /toolslinux                                              
-ln -s /root/github/Crowe-Scripts/pen-tools/Linux/* /toolslinux/
-ln -s /root/github/Crowe-Scripts/pen-tools /
-# Crowe Medusa v2.2_rc2
-if [ $arm == 0 ]; then 
-  cp /toolslinux/passwords/medusa/Crowe_Medusa-2.2_rc2.zip /tmp/
-  cd /tmp
-  unzip Crowe_Medusa-2.2_rc2.zip
-  cd root/medusa-2.2_rc2/
-  ./configure && make && make install
-fi
-# NTDS_EXTRACT
-if [ ! -d "~/NTDS_EXTRACT" ]; then
-  mkdir ~/NTDS_EXTRACT
-  cd ~/NTDS_EXTRACT
-  cp /toolsv3/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
-  cp /toolsv3/Assessment/_Post-Exploitation/VSS/ntdsxtract_v1_0.zip ~/NTDS_EXTRACT/
-  cp /toolsv3/Assessment/_Post-Exploitation/VSS/dshashes.py ~/NTDS_EXTRACT/
-  tar zxvf libesedb-alpha-20120102.tar.gz
-  unzip ntdsxtract_v1_0.zip
-  cp dshashes.py NTDSXtract\ 1.0/dshashes.py
-  cd libesedb-20120102
-  chmod +x configure
-  ./configure && make
+read -r -p "SSH Key for Github repos installed? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    cd $gitdir
+    git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
+    mkdir /toolslinux                                              
+    ln -s /root/github/Crowe-Scripts/pen-tools/Linux/* /toolslinux/
+    ln -s /root/github/Crowe-Scripts/pen-tools /
+    # Crowe Medusa v2.2_rc2
+    #if [ $arm == 0 ]; then 
+    #  cp /toolslinux/passwords/medusa/Crowe_Medusa-2.2_rc2.zip /tmp/
+    #  cd /tmp
+    #  unzip Crowe_Medusa-2.2_rc2.zip
+    #  cd root/medusa-2.2_rc2/
+    #  ./configure && make && make install
+    #fi
+    # NTDS_EXTRACT
+    if [ ! -d "~/NTDS_EXTRACT" ]; then
+      mkdir ~/NTDS_EXTRACT
+      cd ~/NTDS_EXTRACT
+      cp /toolsv3/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
+      cp /toolsv3/Assessment/_Post-Exploitation/VSS/ntdsxtract_v1_0.zip ~/NTDS_EXTRACT/
+      cp /toolsv3/Assessment/_Post-Exploitation/VSS/dshashes.py ~/NTDS_EXTRACT/
+      tar zxvf libesedb-alpha-20120102.tar.gz
+      unzip ntdsxtract_v1_0.zip
+      cp dshashes.py NTDSXtract\ 1.0/dshashes.py
+      cd libesedb-20120102
+      chmod +x configure
+      ./configure && make
+    fi
 fi
 
 
@@ -659,55 +663,6 @@ wget https://bitbucket.org/JesusFreke/smali/downloads/baksmali-2.1.3.jar
 # wget http://downloads.sourceforge.net/project/dex2jar/dex2jar-2.0.zip
 # unzip dex2jar-2.0.zip
 wget https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1.4.0.jar
-
-
-
-###### Docker Setup
-# update apt-get
-export DEBIAN_FRONTEND="noninteractive"
-sudo apt-get update
-
-# remove previously installed Docker
-sudo apt-get purge lxc-docker*
-sudo apt-get purge docker.io*
-
-# add Docker repo
-sudo apt-get install -y apt-transport-https ca-certificates
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-
-cat > /etc/apt/sources.list.d/docker.list <<'EOF'
-deb https://apt.dockerproject.org/repo debian-stretch main
-EOF
-sudo apt-get update
-
-# install Docker
-sudo apt-get install -y docker-engine
-sudo service docker start
-#sudo docker run hello-world
-
-
-# configure Docker user group permissions
-sudo groupadd docker
-sudo gpasswd -a ${USER} docker
-sudo service docker restart
-
-# set Docker to auto-launch on startup
-sudo systemctl enable docker
-
-
-cat > /usr/bin/docker-pid <<'EOF'
-#!/bin/sh
-exec docker inspect --format '{{ .State.Pid }}' "$@"
-EOF
-chmod +x /usr/bin/docker-pid
-
-cat > /usr/bin/docker-ip <<'EOF'
-#!/bin/sh
-exec docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
-EOF
-chmod +x /usr/bin/docker-ip
-#############################################################################################
-
 
 
 ###### Loki Setup
