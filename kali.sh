@@ -523,6 +523,7 @@ for FILE in conntrack rwho x11-apps finger xsltproc; do
   apt-get -y -qq install "${FILE}" 2>/dev/null
   dpkg --configure -a
 done
+pip install --upgrade pip
 pip install xlrd --upgrade
 pip install --upgrade google-api-python-client
 pip install shodan
