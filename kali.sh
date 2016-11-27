@@ -122,6 +122,12 @@ then
   mv /tmp/newhostname /etc/hostname
   # Change Password
   passwd
+  # Config SSH/Change Defaults
+  update-rc.d -f ssh remove
+  update-rc.d -f ssh defaults
+  dpkg-reconfigure openssh-server
+  ssh-keygen -t rsa
+  sed -i 's/without-password/yes/I' /etc/ssh/sshd_config
 fi
 
 
@@ -565,6 +571,7 @@ dpkg -i /tmp/shareenum.deb
 
 
 ##### Install Github repos
+git config --global user.name jbarcia;git config --global user.email jbarcia.spam@gmail.com
 read -r -p "Install Github repos? [y/N] " response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
@@ -600,8 +607,8 @@ read -r -p "SSH Key for Github repos installed? [y/N] " response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
     cd $gitdir
-    git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
-    mkdir /toolslinux                                              
+    git clone git@github.com:jbarcia/Crowe-Scripts.git
+    mkdir /toolslinux
     ln -s /root/github/Crowe-Scripts/pen-tools/Linux/* /toolslinux/
     ln -s /root/github/Crowe-Scripts/pen-tools /
     # Crowe Medusa v2.2_rc2
@@ -616,9 +623,9 @@ then
     if [ ! -d "~/NTDS_EXTRACT" ]; then
       mkdir ~/NTDS_EXTRACT
       cd ~/NTDS_EXTRACT
-      cp /toolsv3/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
-      cp /toolsv3/Assessment/_Post-Exploitation/VSS/ntdsxtract_v1_0.zip ~/NTDS_EXTRACT/
-      cp /toolsv3/Assessment/_Post-Exploitation/VSS/dshashes.py ~/NTDS_EXTRACT/
+      cp /pen-tools/Assessment/_Post-Exploitation/VSS/libesedb-alpha-20120102.tar.gz ~/NTDS_EXTRACT/
+      cp /pen-tools/Assessment/_Post-Exploitation/VSS/ntdsxtract_v1_0.zip ~/NTDS_EXTRACT/
+      cp /pen-tools/Assessment/_Post-Exploitation/VSS/dshashes.py ~/NTDS_EXTRACT/
       tar zxvf libesedb-alpha-20120102.tar.gz
       unzip ntdsxtract_v1_0.zip
       cp dshashes.py NTDSXtract\ 1.0/dshashes.py
@@ -712,7 +719,7 @@ wget https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1
 smbpasswd -an nobody
 mkdir -p /mnt/smb
 
-sed -i 's/\[Global\]/\[Global\] \n guest account = nobody \n map to guest = bad user/I' smb.conf
+sed -i 's/\[Global\]/\[Global\] \n guest account = nobody \n map to guest = bad user/I' /etc/samba/smb.conf
 
 cat <<EOF >> /etc/samba/smb.conf
 
