@@ -43,5 +43,7 @@ cat > /usr/bin/docker-ip <<'EOF'
 exec docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
 EOF
 chmod +x /usr/bin/docker-ip
+
+sudo apt-get install -y docker-compose
 #############################################################################################
 
