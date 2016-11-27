@@ -19,37 +19,36 @@ mkdir -p $dir
 cd $dir
 
 git clone https://github.com/trustedsec/ptf.git
-git clone https://github.com/jbarcia/nethunter.git
-git clone https://github.com/jbarcia/Misc.git
-# git clone https://github.com/jbarcia/g0tmi1k.git
+git clone git@github.com:jbarcia/nethunter.git
+git clone git@github.com:jbarcia/Misc.git
+# git clone git@github.com:jbarcia/g0tmi1k.git
 git clone https://github.com/offensive-security/kali-linux-recipes.git
 git clone https://github.com/mubix/8021xbridge.git
 git clone https://github.com/Warpnet/BitM.git
 git clone https://github.com/pentestmonkey/yaptest.git
-git clone https://jbarcia@github.com/CroweCybersecurity/pen-random-scripts.git
 git clone https://github.com/rofl0r/proxychains-ng.git
 git clone https://github.com/HackerFantastic/Public.git
 git clone https://github.com/subTee/ApplicationWhitelistBypassTechniques.git
 git clone https://github.com/adaptivethreat/BloodHound.git
 
 # Crowe
-git clone https://jbarcia@github.com/jbarcia/Crowe-Scripts.git
+git clone git@github.com:jbarcia/Crowe-Scripts.git
 
 # Ducky
 mkdir -p $dir/ducky
 cd $dir/ducky
-git clone https://github.com/jbarcia/ducky.git
+git clone git@github.com:jbarcia/ducky.git
 git clone https://github.com/Plazmaz/Duckuino.git
 git clone https://github.com/byt3bl33d3r/duckhunter.git
 
 # Recon
 mkdir -p $dir/recon
 cd $dir/recon
-git clone https://jbarcia@github.com/jbarcia/recon.git
+git clone git@github.com:jbarcia/recon.git
 git clone https://github.com/kostrin/Pillage.git
 git clone https://github.com/jrozner/sonar.git
 git clone https://github.com/mubix/resolvequick.git
-# git clone https://github.com/jbarcia/User-Enumeration.git
+# git clone git@github.com:jbarcia/User-Enumeration.git
 git clone https://github.com/smicallef/spiderfoot.git
 git clone https://github.com/FreedomCoder/esearchy_mirai.git
 git clone https://gist.github.com/041641b6896779ebb77e04a578001c28.git
@@ -71,7 +70,7 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
 	ln -s /root/github/recon/discover /opt/
     cd discover/
-	./setup.sh
+	./update.sh
 	cd ..
 fi
 
@@ -108,9 +107,12 @@ then
 	apt-get install libpq-dev 
 	/etc/init.d/postgresql start
 
+	echo "------------------------------------------------"
+	echo "Enter the following in the shell"
+	echo "	createuser -s gitrob --pwprompt"
+	echo "  createdb -O gitrob gitrob"
+	echo "------------------------------------------------"
 	sudo su postgres
-	createuser -s gitrob --pwprompt
-	createdb -O gitrob gitrob
 
 	gem uninstall github_api
 	gem install github_api -v 0.13
@@ -155,7 +157,7 @@ git clone https://github.com/pentestmonkey/ftp-user-enum.git
 git clone https://github.com/pentestmonkey/ident-user-enum.git
 git clone https://github.com/pentestmonkey/gateway-finder.git
 git clone https://github.com/jwalker/SIRT.git
-git clone https://jbarcia@github.com/CroweCybersecurity/go-sshscan.git
+git clone git@github.com:jbarcia/go-sshscan.git
 git clone https://github.com/1N3/Sn1per.git
 git clone https://github.com/rapid7/ssh-badkeys.git
 git clone https://github.com/BenBE/kompromat.git
@@ -186,7 +188,7 @@ git clone https://github.com/vanhauser-thc/thc-ipv6.git
 # MiTM
 mkdir -p $dir/mitm
 cd $dir/mitm
-git clone https://github.com/jbarcia/MiTM-CaptivePortal.git
+git clone git@github.com:jbarcia/MiTM-CaptivePortal.git
 git clone https://github.com/purpleteam/snarf.git
 git clone https://github.com/byt3bl33d3r/MITMf.git
 git clone https://github.com/brav0hax/easy-creds.git
@@ -276,7 +278,7 @@ then
 	cd ..
 fi
 
-git clone https://github.com/jbarcia/Web-Shells.git
+git clone git@github.com:jbarcia/Web-Shells.git
 git clone https://github.com/tennc/webshell.git
 git clone https://github.com/g0tmi1k/exe2hex.git
 git clone https://github.com/subTee/SCTPersistence.git
@@ -396,7 +398,7 @@ mkdir -p $dir/post/osx/enum
 mkdir -p $dir/post/solaris/enum
 mkdir -p $dir/post/databases
 mkdir -p $dir/post/smb
-#git clone https://github.com/jbarcia/priv-escalation.git
+#git clone git@github.com:jbarcia/priv-escalation.git
 cd  $dir/post/linux/enum
 git clone https://github.com/CISOfy/lynis.git
 git clone https://github.com/pentestmonkey/unix-privesc-check.git
@@ -409,7 +411,7 @@ git clone https://github.com/Raikia/SMBCrunch.git
 git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/GDSSecurity/Windows-Exploit-Suggester.git
 git clone https://github.com/enjoiz/Privesc.git
-git clone https://jbarcia@github.com/CroweCybersecurity/ad-ldap-enum.git
+git clone git@github.com:jbarcia/ad-ldap-enum.git
 cd $dir/post/solaris/enum
 git clone https://github.com/pentestmonkey/exploit-suggester.git
 cd $dir/post/win
@@ -425,7 +427,7 @@ cd $dir/post/databases
 git clone https://github.com/foospidy/DbDat.git
 cd $dir/post/smb
 git clone https://github.com/ShawnDEvans/smbmap.git
-git clone https://jbarcia@github.com/CroweCybersecurity/shareenum.git
+git clone git@github.com:jbarcia/shareenum.git
 git clone https://github.com/byt3bl33d3r/CrackMapExec.git
 git clone https://github.com/T-S-A/smbspider.git
 cd $dir/post
@@ -482,7 +484,7 @@ git clone https://github.com/hiddenillusion/AnalyzePDF.git
 # Trusted Sec
 mkdir -p $dir/trustedsec
 cd $dir/trustedsec
-git clone https://github.com/jbarcia/TrustedSec.git
+git clone git@github.com:jbarcia/TrustedSec.git
 git clone https://github.com/trustedsec/unicorn.git
 git clone https://github.com/trustedsec/egressbuster.git
 git clone https://github.com/trustedsec/ridenum.git
@@ -508,5 +510,5 @@ git clone https://github.com/herrbischoff/awesome-osx-command-line.git
 # Physical Security
 mkdir -p $dir/physical
 cd $dir/physical
-#git clone https://jbarcia@github.com/CroweCybersecurity/ravenhid.git
+#git clone git@github.com:jbarcia/ravenhid.git
 git clone https://github.com/CroweCybersecurity/ravenhid.git
