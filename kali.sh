@@ -639,8 +639,8 @@ fi
 ###### Android Hacking Tools
 apt-get -y -qq install python-protobuf || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
 cd /tmp
-#wget https://github.com/mwrlabs/drozer/releases/download/2.3.4/drozer_2.3.4.deb
-#dpkg -i drozer_2.3.4.deb
+wget https://github.com/mwrlabs/drozer/releases/download/2.3.4/drozer_2.3.4.deb
+dpkg -i drozer_2.3.4.deb
 
 wget https://dl.google.com/dl/android/studio/ide-zips/2.2.0.12/android-studio-ide-145.3276617-linux.zip
 unzip android-studio-ide-145.3276617-linux.zip
