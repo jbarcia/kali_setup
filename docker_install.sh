@@ -45,5 +45,34 @@ EOF
 chmod +x /usr/bin/docker-ip
 
 sudo apt-get install -y docker-compose
+
+###### Bloodhound Download
+wget https://github.com/adaptivethreat/BloodHound/releases/download/1.1/BloodHound-linux-x64.zip -O /root/BloodHound-linux-x64.zip
+unzip /root/BloodHound-linux-x64.zip
+
+docker pull neo4j
+docker run --name bloodhound -d --restart=always -p 127.0.0.1:7474:7474 -p 127.0.0.1:7687:7687 neo4j
+docker stop bloodhound
+
+rm/root/BloodHound-linux-x64.zip
+
+###### MATTERMOST CHAT
+docker pull mattermost/mattermost-preview
+docker run --name mattermost -d --restart=always --publish 127.0.0.1:8065:8065 mattermost/mattermost-preview
+docker stop mattermost
+docker rm mattermost
+
+###### AD Control Mapping
+cp /root/github/Crowe-Scripts/ad-control-mapping-master.zip /root/ad-control-mapping-master.zip
+unzip /root/ad-control-mapping-master.zip
+
+cd /root/ad-control-mapping-master
+docker-compose build
+docker-compose exec app rake db:create db:migrate assets:precompile
+docker-compose up -d
+docker run adcontrolmappingmaster_app
+docker stop adcontrolmappingmaster_app
+
+
 #############################################################################################
 
