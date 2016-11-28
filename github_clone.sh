@@ -63,6 +63,8 @@ git clone https://github.com/secworld/Breach-Miner.git
 cd ..
 git clone https://github.com/michenriksen/hibp.git
 git clone https://github.com/WestpointLtd/tls_prober.git
+cd tls_prober/ && git submodule update --init
+cd ..
 git clone https://github.com/leebaird/discover.git
 
 read -r -p "Do you want to configure Discover? [y/N] " response
