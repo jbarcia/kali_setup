@@ -269,7 +269,25 @@ git clone https://github.com/0xsauby/yasuo.git
 mkdir -p $dir/shellcode
 cd $dir/shellcode
 git clone https://github.com/addenial/ps1encode.git
+
+git clone https://github.com/PowerShellEmpire/Empire.git
+read -r -p "Do you want to install Empire? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    cd Empire
+    ./setup/install.sh
+#####################################################
+fi
+
 git clone https://github.com/adaptivethreat/EmPyre.git
+read -r -p "Do you want to install EmPyre? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    cd EmPyre
+    ./setup/install.sh
+#####################################################
+fi
+
 git clone https://github.com/Veil-Framework/Veil.git
 read -r -p "Do you want to configure Veil? [y/N] " response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
