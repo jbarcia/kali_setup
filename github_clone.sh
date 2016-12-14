@@ -62,6 +62,7 @@ then
 	ln -s /root/github/recon/discover /opt/
     cd discover/
 	./update.sh
+	ln -s /opt/discover/discover.sh /usr/bin/discover
 	cd ..
 fi
 
@@ -265,6 +266,7 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
     cd Empire
     ./setup/install.sh
+    cd ..
 #####################################################
 fi
 
@@ -274,6 +276,7 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
     cd EmPyre
     ./setup/install.sh
+    cd ..
 #####################################################
 fi
 
