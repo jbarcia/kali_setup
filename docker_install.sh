@@ -71,8 +71,8 @@ rm /root/ad-control-mapping-master.zip
 
 cd /root/ad-control-mapping-master
 docker-compose build
-docker-compose exec app rake db:create db:migrate assets:precompile
 docker-compose up -d
+docker-compose exec app rake db:create db:migrate assets:precompile
 docker run adcontrolmappingmaster_app
 docker stop adcontrolmappingmaster_app
 

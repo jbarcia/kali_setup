@@ -78,6 +78,17 @@ then
 	cd ..
 fi
 
+git clone https://github.com/1N3/Sn1per.git
+read -r -p "Do you want to configure Sn1per? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+        cd ./Sn1per/
+        chmod +x install.sh
+        ./install.sh
+        cd ..
+fi
+
+
 pip install selenium
 git clone https://github.com/breenmachine/httpscreenshot.git
 	cd ./httpscreenshot
