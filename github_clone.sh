@@ -85,6 +85,7 @@ then
         cd ./Sn1per/
         chmod +x install.sh
         ./install.sh
+        chmod +x sniper
         cd ..
 fi
 
