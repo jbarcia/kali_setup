@@ -4,17 +4,6 @@
 dir=/root/github
 apt-get -f install
 
-read -r -p "Do you want to install Empire? [y/N] " response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-    cd /root/
-    git clone https://github.com/PowerShellEmpire/Empire.git
-	cd Empire
-	cd setup
-	./install.sh
-#####################################################
-fi
-
 mkdir -p $dir
 cd $dir
 
