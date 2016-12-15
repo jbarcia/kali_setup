@@ -35,6 +35,7 @@ mkdir -p $dir/recon
 cd $dir/recon
 git clone git@github.com:jbarcia/recon.git
 git clone https://github.com/kostrin/Pillage.git
+git clone https://github.com/nccgroup/WebFEET.git
 git clone https://github.com/jrozner/sonar.git
 git clone https://github.com/mubix/resolvequick.git
 # git clone git@github.com:jbarcia/User-Enumeration.git
