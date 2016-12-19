@@ -403,6 +403,7 @@ git clone https://github.com/psget/psget.git
 git clone https://github.com/NytroRST/NetRipper.git
 git clone https://github.com/HarmJ0y/Misc-PowerShell.git
 git clone https://github.com/nullbind/Powershellery.git
+git clone https://github.com/nidem/kerberoast.git
 git clone https://github.com/enigma0x3/Invoke-AltDSBackdoor.git
 git clone https://github.com/enigma0x3/Generate-Macro.git
 git clone https://github.com/secabstraction/WmiSploit.git
@@ -437,6 +438,7 @@ git clone https://github.com/pentestmonkey/windows-privesc-check.git
 git clone https://github.com/GDSSecurity/Windows-Exploit-Suggester.git
 git clone https://github.com/enjoiz/Privesc.git
 git clone git@github.com:jbarcia/ad-ldap-enum.git
+git clone https://github.com/skelsec/PyKerberoast.git
 cd $dir/post/solaris/enum
 git clone https://github.com/pentestmonkey/exploit-suggester.git
 cd $dir/post/win
