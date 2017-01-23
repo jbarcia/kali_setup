@@ -69,6 +69,7 @@ if [[ $option == *[p]* ]]; then
 	# github.com/jbarcia/ubuntu-phishingfrenzy
 
 	docker run --name phishingfrenzy -d --restart=always -p 80:80 b00stfr3ak/ubuntu-phishingfrenzy
+	# admin / Funt1me!
 fi
 
 if [[ $option == *[s]* ]]; then
