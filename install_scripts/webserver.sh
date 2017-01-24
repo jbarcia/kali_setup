@@ -51,7 +51,8 @@ while read p; do
 		cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/$site.conf
 		ln -s /etc/apache2/sites-available/$site.conf /etc/apache2/sites-enabled/$site.conf
 
-		sed -ie "s/<VirtualHost *:80>/Listen $port\n<VirtualHost *:$port>/g"
+		sh -c "echo Listen"$port" | cat - /etc/apache2/sites-available/"$site".conf > temp && mv temp /etc/apache2/sites-available/"$site".conf"
+		sed -ie "s/:80/:$port/g" /etc/apache2/sites-available/$site.conf
 		sed -ie "s/\#ServerName www.example.com/ServerName $site\nServerAlias www.$site/g" /etc/apache2/sites-available/$site.conf
 		sed -ie "s/DocumentRoot \/var\/www\/html/DocumentRoot \/var\/www\/html\/$site/g" /etc/apache2/sites-available/$site.conf
 
