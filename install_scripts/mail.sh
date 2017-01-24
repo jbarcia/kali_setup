@@ -18,9 +18,10 @@ fi
 option=$1
 
 if [[ $option == *[d]* ]]; then
-	sudo apt-get update && sudo apt-get -y upgrade
-	sudo apt-get -y install openssh-server screen terminator curl git build-essential tcl linux-image-extra-$(uname -r) linux-image-extra-virtual
-	sudo apt-get -y install apt-transport-https ca-certificates
+apt-get -q -y install zip unzip curl screen tmux
+	sudo apt-get update && sudo apt-get -q -y upgrade
+	sudo apt-get -q -y install zip unzip tmux openssh-server screen terminator curl git build-essential tcl linux-image-extra-$(uname -r) linux-image-extra-virtual
+	sudo apt-get -q -y install apt-transport-https ca-certificates
 	curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
 	sudo add-apt-repository \
 	       "deb https://apt.dockerproject.org/repo/ \
@@ -28,7 +29,7 @@ if [[ $option == *[d]* ]]; then
 	       main"
 
 	sudo apt-get update
-	sudo apt-get -y install docker-engine
+	sudo apt-get -y -q install docker-engine
 	sudo service docker start
 
 	# configure Docker user group permissions
@@ -52,7 +53,7 @@ exec docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
 EOF
 	chmod +x /usr/bin/docker-ip
 
-	sudo apt-get install -y docker-compose
+	sudo apt-get install -q -y docker-compose
 fi
 # reboot / post docker install
 
