@@ -188,10 +188,15 @@ if [ ! -z "${keyboardlayout}" ]; then
   [ "${keyboardApple}" != "false" ] && sed -i 's/XKBVARIANT=".*"/XKBVARIANT="mac"/' "${file}"   # Enable if you are using Apple based products.
   #dpkg-reconfigure -f noninteractive keyboard-configuration   #dpkg-reconfigure console-setup   #dpkg-reconfigure keyboard-configuration -u    # Need to restart xserver for effect
 fi
-#--- Changing time zone
-[ -z "${timezone}" ] && timezone=Etc/UTC     #Etc/GMT vs Etc/UTC vs UTC
-echo "${timezone}" > /etc/timezone           #Etc/GMT vs Etc/UTC vs UTC vs Europe/London
-ln -sf "/usr/share/zoneinfo/$(cat /etc/timezone)" /etc/localtime
+#--- Changing time zone to US Eastern
+#[ -z "${timezone}" ] && timezone=Etc/UTC     #Etc/GMT vs Etc/UTC vs UTC
+#echo "${timezone}" > /etc/timezone           #Etc/GMT vs Etc/UTC vs UTC vs Europe/London
+#ln -sf "/usr/share/zoneinfo/$(cat /etc/timezone)" /etc/localtime
+
+#Changing system to UTC
+timedatectl set-timezone Etc/UTC
+ln -fs /usr/share/zoneinfo/UTC /etc/localtime
+
 dpkg-reconfigure -f noninteractive tzdata
 #--- Setting locale    # Cant't do due to user input
 #sed -i 's/^# en_/en_/' /etc/locale.gen   #en_GB en_US
