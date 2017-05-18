@@ -679,35 +679,38 @@ wget https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1
 
 
 ###### Loki Setup
-#apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
-#if [ $arm == 0 ]; then 
-#  apt-get -y remove python-libpcap
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-central_0.6.17ubuntu2_all.deb" > /tmp/python-central_0.6.17ubuntu2_all.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-central_0.6.17ubuntu2_all.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  cd /tmp
-#  dpkg -i python-central_0.6.17ubuntu2_all.deb
-#fi
-## x86
-#if [ $proc == 32 ]; then 
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libssl0.9.8_0.9.8o-7_i386.deb" > /tmp/libssl0.9.8_0.9.8o-7_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libssl0.9.8_0.9.8o-7_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dpkt_1.6+svn54-1_all.deb" > /tmp/python-dpkt_1.6+svn54-1_all.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dpkt_1.6+svn54-1_all.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dumbnet_1.12-3.1_i386.deb" > /tmp/python-dumbnet_1.12-3.1_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dumbnet_1.12-3.1_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/pylibpcap_0.6.2-1_i386.deb" > /tmp/pylibpcap_0.6.2-1_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading pylibpcap_0.6.2-1_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/loki_0.2.7-1_i386.deb" > /tmp/loki_0.2.7-1_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading loki_0.2.7-1_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  dpkg -i libssl0.9.8_0.9.8o-7_i386.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_i386.deb pylibpcap_0.6.2-1_i386.deb
-#  dpkg –i loki_0.2.7-1_i386.deb
-## x64
-#elif [ $proc == 64 ]; then
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libssl0.9.8_0.9.8o-7_amd64.deb" > /tmp/libssl0.9.8_0.9.8o-7_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libssl0.9.8_0.9.8o-7_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dpkt_1.6+svn54-1_all.deb" > /tmp/python-dpkt_1.6+svn54-1_all.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dpkt_1.6+svn54-1_all.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dumbnet_1.12-3.1_amd64.deb" > /tmp/python-dumbnet_1.12-3.1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dumbnet_1.12-3.1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/pylibpcap_0.6.2-1_amd64.deb" > /tmp/pylibpcap_0.6.2-1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading pylibpcap_0.6.2-1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libcap-dev_2.22-1.2_amd64.deb" > /tmp/libcap-dev_2.22-1.2_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libcap-dev_2.22-1.2_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libpcap0.8-dev_1.3.0-1_amd64.deb" > /tmp/libpcap0.8-dev_1.3.0-1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libpcap0.8-dev_1.3.0-1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#  curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/loki_0.2.7-1_amd64.deb" > /tmp/loki_0.2.7-1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading loki_0.2.7-1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
-#
-#  dpkg -i libssl0.9.8_0.9.8o-7_amd64.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_amd64.deb pylibpcap_0.6.2-1_amd64.deb libcap-dev_2.22-1.2_amd64.deb libpcap0.8-dev_1.3.0-1_amd64.deb
-#  dpkg -i loki_0.2.7-1_amd64.deb
-#fi
+read -r -p "Install Loki? [y/N] " response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+  apt-get -y -qq install curl || echo -e ' '${RED}'[!] Issue with apt-get'${RESET}
+  if [ $arm == 0 ]; then 
+    apt-get -y remove python-libpcap
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-central_0.6.17ubuntu2_all.deb" > /tmp/python-central_0.6.17ubuntu2_all.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-central_0.6.17ubuntu2_all.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    cd /tmp
+    dpkg -i python-central_0.6.17ubuntu2_all.deb
+  fi
+  ## x86
+  if [ $proc == 32 ]; then 
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libssl0.9.8_0.9.8o-7_i386.deb" > /tmp/libssl0.9.8_0.9.8o-7_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libssl0.9.8_0.9.8o-7_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dpkt_1.6+svn54-1_all.deb" > /tmp/python-dpkt_1.6+svn54-1_all.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dpkt_1.6+svn54-1_all.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dumbnet_1.12-3.1_i386.deb" > /tmp/python-dumbnet_1.12-3.1_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dumbnet_1.12-3.1_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/pylibpcap_0.6.2-1_i386.deb" > /tmp/pylibpcap_0.6.2-1_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading pylibpcap_0.6.2-1_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/loki_0.2.7-1_i386.deb" > /tmp/loki_0.2.7-1_i386.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading loki_0.2.7-1_i386.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    dpkg -i libssl0.9.8_0.9.8o-7_i386.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_i386.deb pylibpcap_0.6.2-1_i386.deb
+    dpkg –i loki_0.2.7-1_i386.deb
+  ## x64
+  elif [ $proc == 64 ]; then
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libssl0.9.8_0.9.8o-7_amd64.deb" > /tmp/libssl0.9.8_0.9.8o-7_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libssl0.9.8_0.9.8o-7_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dpkt_1.6+svn54-1_all.deb" > /tmp/python-dpkt_1.6+svn54-1_all.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dpkt_1.6+svn54-1_all.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/python-dumbnet_1.12-3.1_amd64.deb" > /tmp/python-dumbnet_1.12-3.1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading python-dumbnet_1.12-3.1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/pylibpcap_0.6.2-1_amd64.deb" > /tmp/pylibpcap_0.6.2-1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading pylibpcap_0.6.2-1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libcap-dev_2.22-1.2_amd64.deb" > /tmp/libcap-dev_2.22-1.2_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libcap-dev_2.22-1.2_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/libpcap0.8-dev_1.3.0-1_amd64.deb" > /tmp/libpcap0.8-dev_1.3.0-1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading libpcap0.8-dev_1.3.0-1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+    curl --progress -k -L -f "https://github.com/jbarcia/kali_setup/blob/master/loki_debs/loki_0.2.7-1_amd64.deb" > /tmp/loki_0.2.7-1_amd64.deb || echo -e ' '${RED}'[!]'${RESET}" Issue downloading loki_0.2.7-1_amd64.deb" 1>&2   #***!!! hardcoded version! Need to manually check for updates
+
+    dpkg -i libssl0.9.8_0.9.8o-7_amd64.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_amd64.deb pylibpcap_0.6.2-1_amd64.deb libcap-dev_2.22-1.2_amd64.deb libpcap0.8-dev_1.3.0-1_amd64.deb
+    dpkg -i loki_0.2.7-1_amd64.deb
+  fi
 
 ##### Install 32 bit libraries for wmic.py
 #if [ $proc == 64 ]; then 
