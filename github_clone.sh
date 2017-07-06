@@ -166,6 +166,8 @@ git clone git@github.com:jbarcia/go-sshscan.git
 git clone https://github.com/1N3/Sn1per.git
 git clone https://github.com/rapid7/ssh-badkeys.git
 git clone https://github.com/BenBE/kompromat.git
+git clone https://github.com/internetwache/GitTools
+git clone https://github.com/drwetter/testssl.sh.git
 
 # Passwords
 mkdir -p $dir/passwords
