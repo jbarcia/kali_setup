@@ -530,7 +530,7 @@ dpkg --configure -a
 ##### Install random dependencies for scripts
 echo -e "\n ${GREEN}[+]${RESET} Installing ${GREEN}random dependencies for scripts${RESET} ~ random stuff"
 #*** I know its messy...
-for FILE in conntrack rwho x11-apps finger xsltproc; do
+for FILE in conntrack rwho x11-apps finger xsltproc cifs-utils; do
   apt-get -y -qq install "${FILE}" 2>/dev/null
   dpkg --configure -a
 done
@@ -538,7 +538,10 @@ pip install --upgrade pip
 pip install xlrd --upgrade
 pip install --upgrade google-api-python-client
 pip install shodan
+pip install shodan --upgrade
 pip install -U pytz python-qt flickrapi python-instagram yapsy tweepy google-api-python-client python-dateutil configobj dominate
+pip install pbkdf2
+pip install cx_Oracle
 
 
 ##### Install python dependencies
@@ -573,7 +576,9 @@ elif [ $proc == 64 ]; then
 fi
 dpkg -i /tmp/shareenum.deb
 
-
+##### Install SSL Certbot
+wget https://dl.eff.org/certbot-auto -O /usr/bin/certbot-auto
+chmod a+x /usr/bin/certbot-auto
 
 ##### Install Github repos
 git config --global user.name jbarcia;git config --global user.email jbarcia.spam@gmail.com
@@ -605,6 +610,12 @@ dpkg --configure -a
 #fi
 
 #apt-get --reinstall install john
+
+##### Install Perl modules
+  perl -MCPAN -e 'install CPAN'
+  perl -MCPAN -e 'install Net::Nslookup'
+  perl -MCPAN -e 'install Net::Whois::Raw'
+  perl -MCPAN -e 'install Win32::OLE'
 
 ##### Install Work Specific Scripts
 # Github download
