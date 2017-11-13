@@ -619,6 +619,7 @@ dpkg --configure -a
 
 ##### Install Work Specific Scripts
 # Github download
+apt-get  -y -qq install sublist3r
 read -r -p "SSH Key for Github repos installed? [y/N] " response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
