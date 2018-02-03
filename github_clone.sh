@@ -23,13 +23,6 @@ git clone https://github.com/adaptivethreat/BloodHound.git
 # Crowe
 git clone git@github.com:jbarcia/Crowe-Scripts.git
 
-# Ducky
-mkdir -p $dir/ducky
-cd $dir/ducky
-git clone git@github.com:jbarcia/ducky.git
-git clone https://github.com/Plazmaz/Duckuino.git
-git clone https://github.com/byt3bl33d3r/duckhunter.git
-
 # Recon
 mkdir -p $dir/recon
 cd $dir/recon
@@ -541,3 +534,9 @@ mkdir -p $dir/physical
 cd $dir/physical
 #git clone git@github.com:jbarcia/ravenhid.git
 git clone https://github.com/CroweCybersecurity/ravenhid.git
+# Ducky
+mkdir -p $dir/physical/ducky
+cd $dir/physical/ducky
+git clone git@github.com:jbarcia/ducky.git
+git clone https://github.com/Plazmaz/Duckuino.git
+git clone https://github.com/byt3bl33d3r/duckhunter.git
