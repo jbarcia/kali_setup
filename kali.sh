@@ -723,6 +723,7 @@ then
     dpkg -i libssl0.9.8_0.9.8o-7_amd64.deb python-dpkt_1.6+svn54-1_all.deb python-dumbnet_1.12-3.1_amd64.deb pylibpcap_0.6.2-1_amd64.deb libcap-dev_2.22-1.2_amd64.deb libpcap0.8-dev_1.3.0-1_amd64.deb
     dpkg -i loki_0.2.7-1_amd64.deb
   fi
+fi
 
 ##### Install 32 bit libraries for wmic.py
 #if [ $proc == 64 ]; then 
